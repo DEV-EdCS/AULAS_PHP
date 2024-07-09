@@ -9,10 +9,16 @@ echo "Hello World";
 echo "<b> Olá Mundo <b>";
 
 $nome = 'Fulano';
+echo "<br>";
+
 define("PI", 3.14); //forma de se fazer const
+echo "<br>";
 
 echo PI;
+echo "<br>";
+
 echo $nome . "<br>";
+echo "<br>";
 
 $corFavorita; //camel case
 $cor_favorita; //snake case - MAIS USADA
@@ -21,7 +27,28 @@ $CorFavorita; //pascal case
 echo "Meu nome é:" . $nome . "<br>";
 echo "Meu nome é: $nome\n";
 
-echo strlen($nome)
+echo "<br>";
+echo "<br>";
+
+echo strlen($nome);
+
+echo "<br>";
+echo "<br>";
+
+$frutas = array('maça', 'banana', 'manga');
+
+foreach($frutas as $vitamina){
+    echo $vitamina . "<br>";
+}
+echo "<br>";
+
+$idades = array("pedro"=>18, "magno"=>40);
+echo $idades['magno'];
+
+foreach($idades as $nome=>$idade){
+    echo "$nome tem $idade anos <br>";
+}
+
 
 ?>
 
