@@ -35,7 +35,12 @@ echo strlen($nome);
 echo "<br>";
 echo "<br>";
 
+echo rand(0, 10);
+echo "<br>";
+
 $frutas = array('maça', 'banana', 'manga');
+
+echo $frutas[0];
 
 foreach($frutas as $vitamina){
     echo $vitamina . "<br>";
