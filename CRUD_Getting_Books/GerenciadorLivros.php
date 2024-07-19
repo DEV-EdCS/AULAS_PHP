@@ -21,7 +21,7 @@ class GerenciadorLivros {
             'isbn' => $livro->getISBN(),
             'cadastrado' => $livro->getCadastrado(),
             'estado' => $livro->getEstado(),
-            'capa' => $livro->getcaminhoCapa(),
+            /*'capa' => $livro->getcaminhoCapa(),*/
         ];
         $this->salvarDados();
     }
@@ -43,5 +43,5 @@ class GerenciadorLivros {
     private function salvarDados() {
         file_put_contents($this->arquivo, json_encode($this->livros, JSON_PRETTY_PRINT));
     }
-}
+};
 ?>

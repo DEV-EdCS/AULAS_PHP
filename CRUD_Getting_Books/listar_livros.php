@@ -16,7 +16,7 @@ if (!empty($livros)) {
         echo "ISNB: " . htmlspecialchars($livro['isbn']) . "<br>";
         echo "Cadastrado em: " . htmlspecialchars($livro['cadastrado']) . "<br>";
         echo "Estado de conservação: " . htmlspecialchars($livro['estado']) . "<br>";
-        echo "Capa: " . htmlspecialchars($livro['capa']) . "<br>";
+        /*echo "Capa: " . htmlspecialchars($livro['capa']) . "<br>";*/
         echo "< class='botap-deletar' href='deletar_livro.php? indice={$indice}'>Deletar</a>";
         echo "</div>";
     }

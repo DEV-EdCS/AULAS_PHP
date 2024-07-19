@@ -30,8 +30,8 @@
         <label for="estado">Estado de conservação: </label>
         <input type="text" id="estado" name="estado" placeholder="Descreva o estado atual do livro" required><br><br>
 
-        <label for="caminhoCapa">Capa: </label>
-        <input type="file"  id="caminhoCapa" name="caminhoCapa" require><br><br>
+        <!-- <label for="caminhoCapa">Capa: </label>
+        <input type="file"  id="caminhoCapa" name="caminhoCapa" require><br><br> -->
         
         <input type="submit" value="Adicionar Livro">
     </form>

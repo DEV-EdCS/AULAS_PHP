@@ -8,7 +8,7 @@ class Livro {
     private $isbn;
     private $cadastrado;
     private $estado;
-    private $caminhoCapa;
+    // private $caminhoCapa;
 
     // Construtor de classe
     public function _construct($titulo, $sinopse, $editora, $ano, $isbn, $cadastrado, $estado, $caminhoCapa) {
@@ -19,7 +19,7 @@ class Livro {
         $this->isbn = $isbn;
         $this->cadastrado = $cadastrado;
         $this->estado = $estado;
-        $this->caminhoCapa = $caminhoCapa;
+        // $this->caminhoCapa = $caminhoCapa;
     }
 
     // Getters para acessar as propriedade do livro
@@ -51,8 +51,8 @@ class Livro {
         return $this->estado;
     }
 
-    public function getcaminhoCapa() {
+    /*public function getcaminhoCapa() {
         return $this->caminhoCapa;
-    }
+    }*/
 }
 ?>
