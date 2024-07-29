@@ -1,0 +1,40 @@
+/* Define a fonte padrão */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo do container principal */
+.container {
+    margin-top: 50px;
+}
+
+/* Estilo para o título */
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Estilo para a lista de carros */
+#lista-carros {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Estilo para cada item da lista de carros */
+.item-carro {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Remove a borda inferior do último item */
+.item-carro:last-child {
+    border-bottom: none;
+}
+
+/* Estilo para o botão de deletar */
+.botao-deletar {
+    color: red;
+    cursor: pointer;
+}

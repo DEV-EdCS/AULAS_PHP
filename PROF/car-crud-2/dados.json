@@ -1,0 +1,14 @@
+[
+    {
+        "marca": "citroen",
+        "modelo": "Sandeiro",
+        "ano": "2022",
+        "cor": "veremelha"
+    },
+    {
+        "marca": "chevrolet",
+        "modelo": "onix",
+        "ano": "2018",
+        "cor": "amarela"
+    }
+]

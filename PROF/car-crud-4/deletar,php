@@ -1,0 +1,21 @@
+<?php
+// Inclui os arquivos de conexão e da classe Carro
+require 'conexao.php';
+require 'Carro.php';
+
+// Cria a conexão com o banco de dados
+$conexao = (new Conexao())->conectar();
+// Cria uma instância da classe Carro
+$carro = new Carro($conexao);
+
+// Verifica se a requisição é do tipo POST
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obtém os IDs dos carros selecionados para deletar
+    $ids = $_POST['ids'];
+
+    // Deleta os carros selecionados no banco de dados
+    $carro->deletar($ids);
+    // Redireciona para a página inicial
+    header('Location: index.php');
+}
+?>

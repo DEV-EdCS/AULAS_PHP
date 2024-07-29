@@ -1,0 +1,16 @@
+[
+    {
+        "marca": "Reanaut",
+        "modelo": "Sandeiro",
+        "ano": "2022",
+        "cor": "branca",
+        "foto": "uploads\/sandeiro.jpeg"
+    },
+    {
+        "marca": "citroen",
+        "modelo": "c3",
+        "ano": "2024",
+        "cor": "vermelha",
+        "foto": "uploads\/c3.jpeg"
+    }
+]
