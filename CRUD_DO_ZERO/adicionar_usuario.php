@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //  Verifica se o formulário foi en
     $cpf_usuario = $_POST['cpf_usuario'];
 
     // Cria a SQL para inserir os dados 
-    $sql_inserir_usuario = "INSERT INTO usuarios (nome, email, telefone, cpf) VALUES ('$nome_usuario', '$email_usuario' '$telefone_usuario', '$cpf_usuario')"; // Cria uma variável para guardar e enviar as informações para o banco de dados, utilizando o comando 'INSERT INTO' com os valores 'VALUES' dos formulários
+    $sql_inserir_usuario = "INSERT INTO usuarios (nome, email, telefone, cpf) VALUES ('$nome_usuario', '$email_usuario', '$telefone_usuario', '$cpf_usuario')"; // Cria uma variável para guardar e enviar as informações para o banco de dados, utilizando o comando 'INSERT INTO' com os valores 'VALUES' dos formulários
     
     // Função para executar a SQL e verificar se a inserção foi bem-sucedida
     if ($conexao_banco->query($sql_inserir_usuario) === TRUE) { // 'query' Se foi bem-sucedida, retorna 'TRUE'
