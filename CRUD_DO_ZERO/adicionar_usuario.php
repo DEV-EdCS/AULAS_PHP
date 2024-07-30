@@ -16,10 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //  Verifica se o formulário foi en
     $cpf_usuario = $_POST['cpf_usuario'];
 
     // Cria a SQL para inserir os dados 
-    $sql_inserir_usuario = "INSERT INTO users (name, email) VALUES ('$nome_usuario', '$email_usuario' '$telefone_usuario', '$cpf_usuario')"; // Cria uma variável para guardar e enviar as informações para o banco de dados, utilizando o comando 'INSERT INTO' com os valores 'VALUES' dos formulários
+    $sql_inserir_usuario = "INSERT INTO usuarios (nome, email, telefone, cpf) VALUES ('$nome_usuario', '$email_usuario' '$telefone_usuario', '$cpf_usuario')"; // Cria uma variável para guardar e enviar as informações para o banco de dados, utilizando o comando 'INSERT INTO' com os valores 'VALUES' dos formulários
     
     // Função para executar a SQL e verificar se a inserção foi bem-sucedida
-    if ($conexao_banco->query($sql_inserir_usuario) === TRUE) { // Se foi bem-sucedida, retorna 'TRUE'
+    if ($conexao_banco->query($sql_inserir_usuario) === TRUE) { // 'query' Se foi bem-sucedida, retorna 'TRUE'
         echo "Novo usuário adicionado com sucesso"; // Exibe a mensagem de êxito na inserção de dados
     } else { // Se ocorrer um erro, exibe uma mensagem de erro junto com a consulta SQL e a mensagem de erro retornada pelo banco de dados
         echo "Erro ao adicionar usuário: " . $sql_inserir_usuario . "<br>" . $conexao_banco->error;
