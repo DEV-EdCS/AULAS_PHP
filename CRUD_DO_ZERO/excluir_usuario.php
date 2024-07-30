@@ -1,4 +1,5 @@
 <?php
+// PASSO 6
 // Inclui o arquivo de conexão com o banco de dados
 include 'conexao_bd.php';
 

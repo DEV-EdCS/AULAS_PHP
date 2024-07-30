@@ -1,5 +1,5 @@
 <?php
-// Passo 4: Criar Função para Ler Dados (Read)
+// Passo 4 Criar Função para Ler Dados (Read)
 // Ler os dados existentes em uma tabela do banco de dados MySQL e exibi-los em uma página web
 
 include 'conexao_bd'; // Utilizar o arquivo de conexão previamente criado (conexao_bd.php)
