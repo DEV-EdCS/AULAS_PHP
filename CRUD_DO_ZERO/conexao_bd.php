@@ -1,4 +1,6 @@
 <?php 
+// PASSO 2
+// Despois de criar o banco de dados é preciso configurar a conexão com o php
 
 // Configurações de conexão
 $servidor_banco = "localhost"; // Cria uma variável no php para se comunicar com o servidor local do banco de dados
