@@ -49,8 +49,8 @@
                 <div class="formulario">
                     <div>
                         <fieldset>
-                            <label for="text">Código do produto</label>
-                            <input type="text">
+                            <label for="text" >Código do produto</label>
+                            <input type="text" name="codigo">
                         </fieldset>
                     </div>
                     <div>
