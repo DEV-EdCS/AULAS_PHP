@@ -1,18 +1,26 @@
 <?php 
 // PASSO 2
 // Depois de criar o banco de dados é preciso configurar a conexão com o php
-
+class Conexao {
 // Configurações de conexão
-$servidor_banco = "localhost"; // Cria uma variável no php para se comunicar com o servidor local do banco de dados
-$usuario_banco = "root"; // Para exemplo vamos usar o usuário administrador padrão "root" do MySQL
-$senha_banco = ""; // Senha do usuário root (vazia no ambiente de desenvolvimento)
-$nome_banco = "ludo_fashion"; // Nome do banco de dados que foi criado
+private $host = "localhost"; // Cria uma variável no php para se comunicar com o servidor local do banco de dados
+private $usuario = "root"; // Para exemplo vamos usar o usuário administrador padrão "root" do MySQL
+private $senha = ""; // Senha do usuário root (vazia no ambiente de desenvolvimento)
+private $nome_banco = "ludo_fashion"; // Nome do banco de dados que foi criado
 
-// Criar conexão com o banco de dados
-$pdo = new PDO("mysql:host=servidor_banco; nome_banco=ludo_fashion", "usuario_banco", "senha_banco"); // Cria uma variável que se comunica com a função mysql(cria uma nova conexão com o banco de dados usando os parâmetros fornecidos)
-
-// Cria uma função para verifica se houve erro na conexão
-if ($conexao_banco->connect_error) { // Se houver, exibe uma mensagem de erro e interrompe a execução do script com 'die'
-    die("Falha na conexão com o banco de dados: " . $conexao_banco->connect_error);
+// Método para conectar ao banco de dados
+public function conectar() {
+    try {
+        // Cria uma nova instância de PDO para a conexão com o banco de dados
+        $conexao = new PDO("mysql:host=$this->host;nome_banco=$this->nome_banco", $this->usuario, $this->senha);
+        // Define o modo de erro do PDO para exceções
+        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // Retorna a conexão
+        return $conexao;
+    } catch (PDOException $e) {
+        // Em caso de erro, exibe a mensagem de erro
+        echo 'Erro: ' . $e->getMessage();
+    }
+}
 }
 ?>
