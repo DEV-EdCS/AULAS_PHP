@@ -2,10 +2,10 @@
 // Passo 4 Criar Função para Ler Dados (Read)
 // Ler os dados existentes em uma tabela do banco de dados MySQL e exibi-los em uma página web
 
-include 'conexao_bd'; // Utilizar o arquivo de conexão previamente criado (conexao_bd.php)
+include 'conexao_bd.php'; // Utilizar o arquivo de conexão previamente criado (conexao_bd.php)
 
 // Cria a SQL para selecionar os dados
-$sql_selecionar_usuarios = "SELECT id_exemplo, nome, email, telefone, cpf FROM usuarios"; // SELECT para selecionar as colunas específicas, FROM seleciona as tabelas 
+$sql_selecionar_usuarios = "SELECT id, nome, email, telefone, cpf FROM usuarios"; // SELECT para selecionar as colunas específicas, FROM seleciona as tabelas 
 $resultado_selecionar_usuarios = $conexao_banco->query($sql_selecionar_usuarios); // 'query' É uma solicitação de informações feita ao banco de dados que retorna os resultados
 ?>
 
