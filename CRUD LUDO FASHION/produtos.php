@@ -12,17 +12,18 @@ class Produtos{
        // Método para adicionar um produto no banco de dados
        public function adicionar($nome, $tamanho, $cor, $preco, $descricao) {
         // SQL para inserir um novo produto
-        $sql = "INSERT INTO produtos (nome, tamanho, cor, preco, descricao) VALUES (:nome, :modelo, :ano, :cor)";
+        $sql = "INSERT INTO produtos (nome, tamanho, cor, preco, descricao) VALUES (:nome, :tamanho, :cor, :preco, :descricao)";
         // Prepara a consulta SQL
-        $stmt = $this->conexao->prepare($sql);
+        $stmt = $this->conexao->prepare($sql); // 'prepare' Prepara uma instrução SQL para execução
         // Associa os valores aos parâmetros da consulta
-        $stmt->bindParam(':marca', $marca);
-        $stmt->bindParam(':modelo', $modelo);
-        $stmt->bindParam(':ano', $ano);
+        $stmt->bindParam(':nome', $nome); // 'stmt' Representa uma declaração preparada 'bindParam' Vincula um parâmetro ao nome de variável especificado
+        $stmt->bindParam(':tamanho', $tamanho);
         $stmt->bindParam(':cor', $cor);
+        $stmt->bindParam(':preco', $preco);
+        $stmt->bindParam(':descricao', $descricao);
         // Executa a consulta e retorna o resultado
         return $stmt->execute();
     }
-     id	nome	tamanho	cor	preco	descricao	
+    
 }
 ?>
