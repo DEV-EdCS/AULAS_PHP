@@ -6,7 +6,7 @@ require 'produtos.php';
 // Cria a conexão com o banco de dados
 $conexao = (new Conexao())->conectar();
 // Cria uma instância da classe Produtos
-$produto = new Produto($conexao);
+$produto = new Produtos($conexao);
 
 // Obtém a lista de produtos do banco de dados
 $produtos = $produto->listar();
@@ -15,8 +15,8 @@ $produtos = $produto->listar();
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
     // Obtém os IDs dos produtos a serem deletados
     $idsParaDeletar = $_POST['ids'];
-    // Deleta os carros selecionados
-    $carro->deletar($idsParaDeletar);
+    // Deleta os produtos selecionados
+    $produto->deletar($idsParaDeletar);
     // Redireciona para a página inicial
     header('Location: index.php');
     exit(); // Certifique-se de que o script é encerrado após o redirecionamento
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                             <td>
                                 <!-- Exibe a foto do produto, se disponível -->
                                 <?php if ($produto['foto']): ?>
-                                    <img src="uploads/<?= $produto['foto'] ?>" width="218" height="148" alt="Foto do Carro">
+                                    <img src="uploads/<?= $produto['foto'] ?>" width="218" height="148" alt="Foto do Produto">
                                 <?php endif; ?>
                             </td>
                             <td><?= htmlspecialchars($produto['nome']) ?></td>
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                             <td><?= htmlspecialchars($produto['tamanho']) ?></td>
                             <td><?= htmlspecialchars($produto['descricao']) ?></td>
                             <td>
-                                <!-- Link para editar o carro -->
+                                <!-- Link para editar o produto -->
                                 <a href="editar.php?id=<?= $produto['id'] ?>" class="btn btn-warning">Editar</a>
                             </td>
                         </tr>

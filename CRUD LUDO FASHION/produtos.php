@@ -8,7 +8,7 @@ class Produtos
         $this->conexao = $conexao;
     }
 
-    // Método para adicionar um carro
+    // Método para adicionar um produto
     public function adicionar($nome, $cor, $tamanho, $descricao, $foto) // Cria as variáveis para armazenar os dados do formulário
     {
         $sql = "INSERT INTO produtos (nome, cor, tamanho, descricao, foto) VALUES (:nome, :cor, :tamanho, :descricao, :foto)"; // insere na tabela produtos os valores das colunas
@@ -45,19 +45,19 @@ class Produtos
         $sql = "UPDATE produtos SET nome = :nome, cor = :cor, tamanho = :tamanho, descricao = :descricao, foto = :foto WHERE id = :id"; // Atualiza os dados da tabela produtos utilizando o UPDATE através do ID específico 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':marca', $marca);
-        $stmt->bindParam(':modelo', $modelo);
-        $stmt->bindParam(':ano', $ano);
+        $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':cor', $cor);
+        $stmt->bindParam(':tamanho', $tamanho);
+        $stmt->bindParam(':descricao', $descricao);
         $stmt->bindParam(':foto', $foto);
         $stmt->execute();
     }
 
-    // Método para deletar carros
+    // Método para deletar produtos
     public function deletar($ids)
     {
         $ids = implode(',', array_map('intval', $ids));
-        $sql = "DELETE FROM carros WHERE id IN ($ids)";
+        $sql = "DELETE FROM produtos WHERE id IN ($ids)";
         $this->conexao->exec($sql);
     }
 }

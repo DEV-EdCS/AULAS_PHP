@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 $conexao = (new Conexao())->conectar();
 
 // Cria uma instância da classe Produtos
-$produto = new Produto($conexao);
+$produto = new Produtos($conexao);
 
 // Verifica se a requisição é do tipo POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
