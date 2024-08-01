@@ -10,9 +10,10 @@ private $nome_banco = "ludo_fashion"; // Nome do banco de dados que foi criado
 
 // Método para conectar ao banco de dados
 public function conectar() {
+    $this->conn = null;
     try {
         // Cria uma nova instância de PDO para a conexão com o banco de dados
-        $conexao = new PDO("mysql:host=$this->host;nome_banco=$this->nome_banco", $this->usuario, $this->senha);
+        $conexao = new PDO("mysql:host=$this->host; dbname=$this->nome_banco", $this->usuario, $this->senha);
         // Define o modo de erro do PDO para exceções
         $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // Retorna a conexão
