@@ -3,7 +3,7 @@
 class Conexao {
     // Atributos para armazenar os detalhes da conexão
     private $host = 'localhost';
-    private $dbname = 'carros_db2';
+    private $dbname = 'ludo_fashion';
     private $usuario = 'root';
     private $senha = '';
 
