@@ -1,7 +1,7 @@
 <?php
 // Inclui os arquivos de conexão e da classe Carro
 require 'conexao.php';
-require 'Carro.php';
+require 'produtos.php';
 
 // Habilita a exibição de erros para depuração
 ini_set('display_errors', 1);
@@ -11,30 +11,30 @@ error_reporting(E_ALL);
 // Cria a conexão com o banco de dados
 $conexao = (new Conexao())->conectar();
 
-// Cria uma instância da classe Carro
-$carro = new Carro($conexao);
+// Cria uma instância da classe Produtos
+$produto = new Produtos($conexao);
 
-// Verifica se um ID de carro foi passado
+// Verifica se um ID de Produtos foi passado
 $id = $_GET['id'] ?? null;
 if (!$id) {
     header('Location: index.php');
     exit();
 }
 
-// Obtém os dados do carro para o formulário
-$dadosCarro = $carro->obterPorId($id);
-if (!$dadosCarro) {
+// Obtém os dados do produto para o formulário
+$dadosProduto = $produto->obterPorId($id);
+if (!$dadosProduto) {
     header('Location: index.php');
     exit();
 }
 
 // Verifica se a requisição é do tipo POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $marca = $_POST['marca'];
-    $modelo = $_POST['modelo'];
-    $ano = $_POST['ano'];
+    $nome = $_POST['nome'];
     $cor = $_POST['cor'];
-    $fotoNome = $dadosCarro['foto'];
+    $tamanho = $_POST['tamanho'];
+    $descricao = $_POST['descricao'];
+    $fotoNome = $dadosProduto['foto'];
 
     // Lida com o upload da foto
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         imagejpeg($imagemRedimensionada, $destino);
     }
 
-    // Atualiza os dados do carro no banco de dados
-    $carro->atualizar($id, $marca, $modelo, $ano, $cor, $fotoNome);
+    // Atualiza os dados do produto no banco de dados
+    $produto->atualizar($id, $nome, $cor, $tamanho, $tamanho, $descricao, $fotoNome);
 
     // Redireciona para a página inicial
     header('Location: index.php');
@@ -73,8 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <!-- Banner com o nome da loja -->
         <header class="jumbotron text-center bg-primary text-white mb-4">
-            <h1 class="display-4">Loja de Carros</h1>
-            <p class="lead">Editar Carro</p>
+            <h1 class="display-4">Produtos Cadastrados</h1>
+            <p class="lead">Editar Produtos</p>
         </header>
 
         <!-- Formulário de Edição -->
@@ -85,31 +85,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="card-body">
                 <form action="editar.php?id=<?= $id ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="marca">Marca:</label>
-                        <input type="text" name="marca" id="marca" class="form-control" value="<?= htmlspecialchars($dadosCarro['marca']) ?>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="modelo">Modelo:</label>
-                        <input type="text" name="modelo" id="modelo" class="form-control" value="<?= htmlspecialchars($dadosCarro['modelo']) ?>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ano">Ano:</label>
-                        <input type="number" name="ano" id="ano" class="form-control" value="<?= htmlspecialchars($dadosCarro['ano']) ?>" required>
+                        <label for="nome">Nome:</label>
+                        <input type="text" name="nome" id="nome" class="form-control" value="<?= htmlspecialchars($dadosProduto['nome']) ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="cor">Cor:</label>
-                        <input type="text" name="cor" id="cor" class="form-control" value="<?= htmlspecialchars($dadosCarro['cor']) ?>" required>
+                        <input type="text" name="cor" id="cor" class="form-control" value="<?= htmlspecialchars($dadosProduto['cor']) ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tamanho">Tamanho:</label>
+                        <input type="text" name="tamanho" id="tamanho" class="form-control" value="<?= htmlspecialchars($dadosProduto['tamanho']) ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao">Descrição:</label>
+                        <input type="text" name="descricao" id="descricao" class="form-control" value="<?= htmlspecialchars($dadosProduto['descricao']) ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="foto">Foto:</label>
-                        <?php if ($dadosCarro['foto']): ?>
+                        <?php if ($dadosProduto['foto']): ?>
                             <div>
-                                <img src="uploads/<?= $dadosCarro['foto'] ?>" width="218" height="148" alt="Foto do Carro">
+                                <img src="uploads/<?= $dadosProduto['foto'] ?>" width="218" height="148" alt="Foto do Produto">
                             </div>
                         <?php endif; ?>
                         <input type="file" name="foto" id="foto" class="form-control-file" accept="image/jpeg">
                     </div>
-                    <button type="submit" class="btn btn-warning">Atualizar Carro</button>
+                    <button type="submit" class="btn btn-warning">Atualizar Produto</button>
                 </form>
             </div>
         </div>

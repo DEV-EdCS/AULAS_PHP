@@ -1,7 +1,7 @@
 <?php
 // Inclui os arquivos de conexão e da classe Carro
 require 'conexao.php';
-require 'Carro.php';
+require 'produtos.php';
 
 // Habilita a exibição de erros para depuração
 ini_set('display_errors', 1);
@@ -12,13 +12,13 @@ error_reporting(E_ALL);
 $conexao = (new Conexao())->conectar();
 
 // Cria uma instância da classe Carro
-$carro = new Carro($conexao);
+$carro = new Produto($conexao);
 
-// Obtém o ID do carro a ser deletado
+// Obtém o ID do produto a ser deletado
 $id = $_GET['id'] ?? null;
 if ($id) {
-    // Deleta o carro
-    $carro->deletar([$id]);
+    // Deleta o produto
+    $produto->deletar([$id]);
 }
 
 // Redireciona para a página inicial

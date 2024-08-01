@@ -1,19 +1,19 @@
 <?php
-// Inclui os arquivos de conexão e da classe Carro
+// Inclui os arquivos de conexão e da classe Produtos
 require 'conexao.php';
-require 'Carro.php';
+require 'produtos.php';
 
 // Cria a conexão com o banco de dados
 $conexao = (new Conexao())->conectar();
-// Cria uma instância da classe Carro
-$carro = new Carro($conexao);
+// Cria uma instância da classe Produtos
+$produto = new Produto($conexao);
 
-// Obtém a lista de carros do banco de dados
-$carros = $carro->listar();
+// Obtém a lista de produtos do banco de dados
+$produtos = $produto->listar();
 
-// Verifica se a requisição é do tipo POST (para deletar carros)
+// Verifica se a requisição é do tipo POST (para deletar produtos)
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
-    // Obtém os IDs dos carros a serem deletados
+    // Obtém os IDs dos produtos a serem deletados
     $idsParaDeletar = $_POST['ids'];
     // Deleta os carros selecionados
     $carro->deletar($idsParaDeletar);
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>CRUD de Carros</title>
+    <title>CRUD de Produtos</title>
     <!-- Inclui o CSS do Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Inclui o CSS personalizado -->
@@ -37,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
     <div class="container-fluid">
         <!-- Banner com o nome da loja -->
         <header class="jumbotron text-center bg-primary text-white mb-4">
-            <h1 class="display-4">Loja de Carros</h1>
-            <p class="lead">Gerencie seu inventário de carros de forma eficiente</p>
+            <h1 class="display-4">Catálogo Ludo Fashion</h1>
+            <p class="lead">Gerencie seu catálogo de produtos de forma eficiente</p>
         </header>
 
         <!-- Painel de Dashboard -->
@@ -53,8 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                             <div class="col-md-3">
                                 <div class="card bg-success text-white text-center">
                                     <div class="card-body">
-                                        <h5 class="card-title">Total de Carros</h5>
-                                        <p class="card-text"><?= count($carros) ?></p>
+                                        <h5 class="card-title">Total de Produtos</h5>
+                                        <p class="card-text"><?= count($produtos) ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -65,10 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
             </div>
         </div>
 
-        <!-- Botão para adicionar um novo carro -->
-        <a href="adicionar.php" class="btn btn-success mb-3">Adicionar Carro</a>
+        <!-- Botão para adicionar um novo produto -->
+        <a href="adicionar.php" class="btn btn-success mb-3">Adicionar Produto</a>
 
-        <!-- Formulário para deletar carros selecionados -->
+        <!-- Formulário para deletar produtos selecionados -->
         <form action="index.php" method="post">
             <input type="hidden" name="deletar" value="1">
 
@@ -77,40 +77,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                     <tr>
                         <th>Selecionar</th>
                         <th>Foto</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Ano</th>
+                        <th>Nome</th>
                         <th>Cor</th>
+                        <th>Tamanho</th>
+                        <th>Descrição</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($carros as $carro): ?>
+                    <?php foreach ($produtos as $produto): ?>
                         <tr>
                             <td>
-                                <!-- Checkbox para selecionar o carro para deleção -->
-                                <input type="checkbox" name="ids[]" value="<?= $carro['id'] ?>">
+                                <!-- Checkbox para selecionar o produto para deleção -->
+                                <input type="checkbox" name="ids[]" value="<?= $produto['id'] ?>">
                             </td>
                             <td>
-                                <!-- Exibe a foto do carro, se disponível -->
-                                <?php if ($carro['foto']): ?>
-                                    <img src="uploads/<?= $carro['foto'] ?>" width="218" height="148" alt="Foto do Carro">
+                                <!-- Exibe a foto do produto, se disponível -->
+                                <?php if ($produto['foto']): ?>
+                                    <img src="uploads/<?= $produto['foto'] ?>" width="218" height="148" alt="Foto do Carro">
                                 <?php endif; ?>
                             </td>
-                            <td><?= htmlspecialchars($carro['marca']) ?></td>
-                            <td><?= htmlspecialchars($carro['modelo']) ?></td>
-                            <td><?= htmlspecialchars($carro['ano']) ?></td>
-                            <td><?= htmlspecialchars($carro['cor']) ?></td>
+                            <td><?= htmlspecialchars($produto['nome']) ?></td>
+                            <td><?= htmlspecialchars($produto['cor']) ?></td>
+                            <td><?= htmlspecialchars($produto['tamanho']) ?></td>
+                            <td><?= htmlspecialchars($produto['descricao']) ?></td>
                             <td>
                                 <!-- Link para editar o carro -->
-                                <a href="editar.php?id=<?= $carro['id'] ?>" class="btn btn-warning">Editar</a>
+                                <a href="editar.php?id=<?= $produto['id'] ?>" class="btn btn-warning">Editar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
 
-            <!-- Botão para deletar os carros selecionados -->
+            <!-- Botão para deletar os produtos selecionados -->
             <button type="submit" class="btn btn-danger">Deletar Selecionados</button>
         </form>
     </div>
