@@ -27,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fotoNome = uniqid() . '.jpg'; // Gera um nome único para a foto
         $destino = 'uploads/' . $fotoNome;
 
-        // Redimensiona a imagem para 218x148 px
+       // Redimensiona a imagem para 218x348 px
         list($larguraOriginal, $alturaOriginal) = getimagesize($fotoTmp);
         $imagemOriginal = imagecreatefromjpeg($fotoTmp);
-        $imagemRedimensionada = imagecreatetruecolor(218, 148);
-        imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 218, 148, $larguraOriginal, $alturaOriginal);
+        $imagemRedimensionada = imagecreatetruecolor(218, 348);
+        imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 218, 348, $larguraOriginal, $alturaOriginal);
         imagejpeg($imagemRedimensionada, $destino);
 
         // Adiciona o produto no banco de dados

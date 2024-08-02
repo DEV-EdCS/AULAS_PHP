@@ -83,10 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                 <tr class="tabela">
                     <th>Selecionar</th>
                     <th>Foto</th>
-                    <th>Descrição</th>
+                    <th>Nome</th>
                     <th>Cor</th>
                     <th>Tamanho</th>
-                    <th>Nome</th>
+                    <th>Descrição</th>
                     <th>Ações</th>
                 </tr>
             </thead>

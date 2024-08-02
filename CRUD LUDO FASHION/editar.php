@@ -42,16 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fotoNome = uniqid() . '.jpg'; // Gera um nome único para a foto
         $destino = 'uploads/' . $fotoNome;
 
-        // Redimensiona a imagem para 218x148 px
-        list($larguraOriginal, $alturaOriginal) = getimagesize($fotoTmp);
+        // Redimensiona a imagem para 218x348 px
+       list($larguraOriginal, $alturaOriginal) = getimagesize($fotoTmp);
         $imagemOriginal = imagecreatefromjpeg($fotoTmp);
-        $imagemRedimensionada = imagecreatetruecolor(218, 148);
-        imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 218, 148, $larguraOriginal, $alturaOriginal);
+        $imagemRedimensionada = imagecreatetruecolor(218, 348);
+        imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 218, 348, $larguraOriginal, $alturaOriginal);
         imagejpeg($imagemRedimensionada, $destino);
     }
 
     // Atualiza os dados do produto no banco de dados
-    $produto->atualizar($id, $nome, $cor, $tamanho, $tamanho, $descricao, $fotoNome);
+    $produto->atualizar($id, $nome, $cor, $tamanho, $descricao, $fotoNome);
 
     // Redireciona para a página inicial
     header('Location: index.php');
@@ -64,10 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Editar Carro</title>
-    <!-- Inclui o CSS do Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Inclui o CSS personalizado -->
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
