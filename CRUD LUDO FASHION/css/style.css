@@ -72,14 +72,21 @@ nav a:first-child {
 
 .card-header {
     font-size: 1.25rem;
+    background-color: var(--cor-primaria);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.titulo-painel {
+    color: var(--preto);
 }
 
 .card-body {
-    background-color: var(--cor-terciaria);
+    background-color:var(--cor-terciaria);
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 3px;
     margin-bottom: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0;
 }
 
 .card-title {
@@ -179,4 +186,39 @@ img {
 /* Estilo para o formulário */
 .form-control {
     margin-bottom: 1rem;
+}
+
+/* Estilo Add produto */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo1 {
+    margin-top: 2rem;
+}
+
+.titulo2 {
+    margin-top: 2rem;
+    margin-bottom: 0;
+    margin-right: 20%;
+    margin-left: 20%;
+    text-align: center;
+    background-color: var(--cor-secundaria);
+    padding: 2rem;
+}
+
+input {
+    width: 100%;
+    margin-top: 0.25rem;
+    margin-bottom: 2rem;
+}
+
+h4.a {
+    color: var(--branco);
+}
+
+.cabecalho-add {
+    display: flex;
+    flex-direction: column
 }

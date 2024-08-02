@@ -53,46 +53,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <title>Adicionar Produto</title>
     <!-- Inclui o CSS personalizado -->
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
         <!-- Banner com o nome da loja -->
-        <header class="jumbotron text-center bg-primary text-white mb-4">
-            <h1 class="display-4">Catálogo Ludo Fashion</h1>
-            <p class="lead">Adicionar Novo Produto</p>
+        <header class="cabecalho-add">
+            <h1 class="titulo1">Catálogo Ludo Fashion</h1><br>
+            <p>Adicionar Novo Produto</p><br>
         </header>
 
         <!-- Formulário de Adição -->
+         <div>
         <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">Formulário de Adição</h4>
+            <div class="titulo2">
+                <h4 class="titulo-painel">Formulário de Adição</h4>
             </div>
             <div class="card-body">
                 <form action="adicionar.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="nome">Nome:</label>
+                        <label for="nome">Nome:</label><br>
                         <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
                     </div>
                     <div class="form-group">
-                        <label for="cor">Cor:</label>
+                        <label for="cor">Cor:</label><br>
                         <input type="text" name="cor" id="cor" class="form-control" placeholder="Cor" required>
                     </div>
                     <div class="form-group">
-                        <label for="tamanho">Tamanho:</label>
+                        <label for="tamanho">Tamanho:</label><br>
                         <input type="text" name="tamanho" id="tamanho" class="form-control" placeholder="Tamanho" required>
                     </div>
                     <div class="form-group">
-                        <label for="descricao">Descrição:</label>
+                        <label for="descricao">Descrição:</label><br>
                         <input type="text" name="descricao" id="descricao" class="form-control" placeholder="Descrição" required>
                     </div>
                     <div class="form-group">
-                        <label for="foto">Foto:</label>
+                        <label for="foto">Foto:</label><br>
                         <input type="file" name="foto" id="foto" class="form-control-file" accept="image/jpeg">
                     </div>
                     <button type="submit" class="btn btn-success">Adicionar Produto</button>
                 </form>
             </div>
+        </div>
         </div>
     </div>
     <!-- Inclui o JS personalizado -->
