@@ -1,0 +1,182 @@
+/* header ludofashion */
+:root {
+    --cor-primaria: #F464C3;
+    --cor-secundaria: #3d1c31;
+    --cor-terciaria: #fdace0;
+    --branco: white;
+    --preto: black;
+}
+
+* {
+    font-family: "Oswald-medium", sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: var(--preto);
+}
+
+header {
+    background-color: var(--cor-primaria);
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+}
+
+#form-buscar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#buscar {
+    flex-grow: 0.75;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0.5rem;
+}
+
+#btn-buscar {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 11%;
+    cursor: pointer;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    background-color: var(--cor-terciaria);
+    padding: 0.5rem;
+}
+
+nav a:first-child {
+    border-right: 1px solid var(--preto);
+}
+
+/* Estilo para o painel de controle */
+.card {
+    border-radius: 0.3rem;
+}
+
+.card-header {
+    font-size: 1.25rem;
+}
+
+.card-body {
+    background-color: var(--cor-terciaria);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+}
+
+.card-title {
+    font-size: 1.125rem;
+}
+
+.card-text {
+    font-size: 2rem;
+}
+
+/* Painel de controle */
+.container-fluid {
+    margin: 2rem;
+}
+
+/* Estilo para os botões */
+.btn-edicao {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-success {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--cor-terciaria);
+    border-color: var(--cor-terciaria);
+}
+
+.btn-success:hover {
+    border-radius: 5px;
+    padding: 10px;
+    color: var(--branco);
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.btn-warning {
+    border-radius: 3px;
+    padding: 6px;
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.btn-warning:hover {
+    border-radius: 3px;
+    padding: 6px;
+    color: var(--branco);
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.btn-danger {
+    border-radius: 5px;
+    padding: 10px;
+    color: var(--branco);
+    background-color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+    cursor:pointer
+}
+
+.btn-danger:hover {
+    border-radius: 5px;
+    padding: 10px;
+    color: var(--branco);
+    background-color: var(--preto);
+    border-color: var(--preto);
+
+}
+
+/* Estilo para a tabela */
+.table {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.table th, .table td {
+    text-align: center;
+}
+
+.table th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+/* Estilo para as imagens dos produtos */
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    max-width: 100%;
+}
+
+/* Estilo para o formulário */
+.form-control {
+    margin-bottom: 1rem;
+}
