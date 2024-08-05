@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Redireciona para a página inicial
     header('Location: index.php');
-    exit(); // Certifique-se de que o script é encerrado após o redirecionamento
+    exit(); // Certifica de que o script é encerrado após o redirecionamento
 }
 ?>
 
