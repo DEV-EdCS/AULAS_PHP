@@ -34,21 +34,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
 </head>
 <header>
     <a href="" class="icon-link">
-        <img src="../imgs/Logo_LudoFashion.png" alt="" title="Home" width="100px">
+        <img src="../CRUD LUDO FASHION/imgs/Logo_LudoFashion.png" alt="" title="Home" width="100px">
     </a>
 
     <form action="" id="form-buscar">
         <input type="searh" name="Buscar" id="buscar" placeholder="O que você procura?">
-        <button type="submit" id="btn-buscar"><img src="../imgs/icon_search.png" alt="" width="30px"></button>
+        <button type="submit" id="btn-buscar"><img src="../CRUD LUDO FASHION/imgs/icon_search.png" alt="" width="30px"></button>
     </form>
 
     <a href="" class="icon-link">
-        <img src="../imgs/icon_personB.png" alt="" width="40px">
+        <img src="../CRUD LUDO FASHION/imgs/icon_person.png" alt="" width="40px">
         Cadastre-se
     </a>
 
     <a href="" class="icon-link">
-        <img src="../imgs/icon_helpB.png" alt="" width="40px">
+        <img src="../CRUD LUDO FASHION/imgs/icon_help.png" alt="" width="40px">
         Dúvidas
     </a>
 </header>
