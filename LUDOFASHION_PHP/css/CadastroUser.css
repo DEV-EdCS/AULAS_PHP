@@ -1,0 +1,160 @@
+/* Globais */
+:root {
+    --cor-primaria: #F464C3;
+    --cor-secundaria: #3d1c31;
+    --cor-terciaria: #fdace0;
+    --branco: white;
+    --preto: black;
+}
+
+* {
+    text-decoration: none;
+    font-family: "Oswald", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    background-color: var(--cor-primaria);
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+}
+
+#form-buscar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#buscar {
+    flex-grow: 0.75;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0.5rem;
+}
+
+#btn-buscar {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 11%;
+    cursor: pointer;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    background-color: var(--cor-terciaria);
+    padding: 0.5rem;
+}
+
+nav a {
+    color: var(--preto);
+}
+
+nav a:first-child {
+    border-right: 1px solid var(--preto);
+}
+
+/* Formulário */
+.conteudo {
+    background-color: #fdace0;
+    border-radius: 2rem;
+    padding: 3rem;
+    margin-top: 5%;
+    margin-inline: 30%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.formulario1 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.preencher {
+    height: 2.3rem;
+    border: 1px solid #cfd8e0;
+    border-radius: 0.2rem;
+}
+
+/* Enviar do formulário */
+
+.enviar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-enviar {
+    padding: 1rem 4rem;
+    color: var(--branco);
+    background-color: #F464C3;
+    border: none;
+    border-radius: 0.6rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* Estilização do footer */
+footer {
+    background-color: var(--cor-secundaria);
+    color: var(--branco);
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 5rem;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem;
+    padding: 2rem;
+    width: 100%;
+}
+
+footer .social-media {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+li {
+    color: var(--branco);
+    list-style-type: none;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+.rodape-text {
+    text-align: left;
+}
