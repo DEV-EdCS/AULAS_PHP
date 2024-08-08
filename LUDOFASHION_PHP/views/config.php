@@ -1,16 +1,18 @@
 <?php
+// config.php
 // Configurações do banco de dados
-$host = 'localhost';   // Endereço do servidor MySQL
-$ludo_banco = 'ludo_fashion'; // Nome do banco de dados
-$user = 'root';        // Nome de usuário do MySQL
-$pass = '';            // Senha do MySQL
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ludo_fashion";
 
-// Conectar ao banco de dados usando PDO
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$ludo_banco;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Conexão com o banco de dados usando PDO
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Configuração de erros PDO para exceções
 } catch (PDOException $e) {
-    // Exibir mensagem de erro se a conexão falhar
-    echo 'Conexão falhou: ' . $e->getMessage();
+    // Tratamento de erro na conexão
+    echo "Erro na conexão: " . $e->getMessage();
+    exit(); // Encerra o script em caso de erro
 }
 ?>

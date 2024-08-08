@@ -1,35 +1,36 @@
 <?php
-// Inclui os arquivos de conexão e da classe Carro
-require 'config.php';
-require 'usuarios.php';
+// CadastroUser.php
 
-// Habilita a exibição de erros para depuração
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+require 'config.php'; // Inclui a conexão com o banco de dados
 
-// Cria a conexão com o banco de dados
-$conexao = (new conexao())->conectar();
-
-// Cria uma instância da classe usuario
-$usuario = new usuarios($conexao);
-
-// Verifica se a requisição é do tipo POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Recebe os dados do formulário
     $nome = $_POST['nome'];
     $email = $_POST['email'];
-    $senha = $_POST['senha'];
+    $senha = hash('sha256', $_POST['senha']); // Criptografa a senha com SHA-256
     $telefone = $_POST['telefone'];
     $cpf = $_POST['cpf'];
-    $nascimento = $_POST['nascimento']; {
-    
-        // Adiciona o usuario no banco de dados
-        $usuario->adicionar($nome, $email, $senha, $telefone, $cpf, $nascimento);
-    };
+    $nascimento = $_POST['nascimento'];
+    $perfil = 'normal';  // Define o perfil padrão como 'normal'
 
-    // Redireciona para a página inicial
-    header('Location: Login.php');
-    exit(); // Certifique-se de que o script é encerrado após o redirecionamento
+    try {
+        // Prepara a query de inserção
+        $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, telefone, cpf, nascimento, perfil) 
+                                VALUES (:nome, :email, :senha, :telefone, :cpf, :nascimento, :perfil)");
+        // Associa os parâmetros da query aos valores recebidos
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':senha', $senha);
+        $stmt->bindParam(':telefone', $telefone);
+        $stmt->bindParam(':cpf', $cpf);
+        $stmt->bindParam(':nascimento', $nascimento);
+        $stmt->bindParam(':perfil', $perfil);
+        $stmt->execute(); // Executa a query
+        echo "Cadastro realizado com sucesso!"; // Mensagem de sucesso
+    } catch (PDOException $e) {
+        // Tratamento de erro
+        echo "Erro no cadastro: " . $e->getMessage();
+    }
 }
 ?>
 
@@ -107,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input class="btn-enviar" type="submit" class="btn-envio" value="ENVIAR">
                 </div>
                 <div>
-                    <a href="">Já tem uma conta cadastrada?</a>
+                    <a href="/views/Login.php">Já tem uma conta cadastrada?</a>
                 </div>
             </div>
         </form>

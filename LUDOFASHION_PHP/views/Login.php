@@ -1,3 +1,39 @@
+<?php
+// Login.php
+
+session_start(); // Inicia a sessão
+require 'config.php'; // Inclui a conexão com o banco de dados
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Recebe os dados do formulário
+    $email = $_POST['email'];
+    $senha = hash('sha256', $_POST['senha']); // Criptografa a senha com SHA-256
+
+    try {
+        // Prepara a query para buscar o usuário
+        $stmt = $conn->prepare("SELECT id, nome, email, perfil FROM usuarios WHERE email = :email AND senha = :senha");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':senha', $senha);
+        $stmt->execute(); // Executa a query
+
+        if ($stmt->rowCount() > 0) {
+            // Se o usuário for encontrado, cria a sessão
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_nome'] = $user['nome'];
+            $_SESSION['user_email'] = $user['email'];
+            $_SESSION['user_perfil'] = $user['perfil'];
+            header('Location: MeuPerfil.php'); // Redireciona para a página de perfil
+        } else {
+            echo "E-mail ou senha incorretos"; // Mensagem de erro
+        }
+    } catch (PDOException $e) {
+        // Tratamento de erro
+        echo "Erro no login: " . $e->getMessage();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 

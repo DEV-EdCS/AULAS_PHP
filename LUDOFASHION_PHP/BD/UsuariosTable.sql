@@ -1,3 +1,6 @@
+-- Criação do banco de dados
+CREATE DATABASE ludo_fashion;
+
 -- Seleção do banco de dados
 USE ludo_fashion;
 

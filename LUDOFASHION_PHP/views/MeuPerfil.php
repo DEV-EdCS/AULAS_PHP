@@ -1,3 +1,36 @@
+<?php
+// MeuPerfil.php
+
+session_start(); // Inicia a sessão
+require 'config.php'; // Inclui a conexão com o banco de dados
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['user_id'])) {
+    header('Location: Login.php'); // Redireciona para a página de login se não estiver logado
+    exit();
+}
+
+// Recebe os dados do usuário logado
+$user_id = $_SESSION['user_id'];
+
+try {
+    // Prepara a query para buscar os dados do usuário
+    $stmt = $conn->prepare("SELECT nome, email, telefone, cpf, nascimento FROM usuarios WHERE id = :id");
+    $stmt->bindParam(':id', $user_id);
+    $stmt->execute(); // Executa a query
+
+    // Busca os dados e preenche as variáveis
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $nome = $user['nome'];
+    $email = $user['email'];
+    $telefone = $user['telefone'];
+    $cpf = $user['cpf'];
+    $nascimento = $user['nascimento'];
+} catch (PDOException $e) {
+    echo "Erro ao buscar dados do perfil: " . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
