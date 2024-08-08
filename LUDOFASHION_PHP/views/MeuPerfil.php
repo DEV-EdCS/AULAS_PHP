@@ -96,6 +96,7 @@ try {
             </div>
 
             <form for="MeuPerfil.php" class="conteudo">
+         
                 <div class="question">
                     <label for="nome">Nome:</label>
                     <label for="email">Email:</label>
