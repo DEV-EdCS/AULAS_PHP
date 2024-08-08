@@ -1,7 +1,7 @@
 <?php
 // CadastroUser.php
 
-require 'config.php'; // Inclui a conexão com o banco de dados
+require 'conexao.php'; // Inclui a conexão com o banco de dados
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recebe os dados do formulário
