@@ -41,7 +41,7 @@
         <div class="part1">
             <div class="options1">
                 <a href="../views/MeuPerfil.html"><img src="../imgs/Icon_user.png" alt="" width="40px"></a>
-                <a href="../views/MeuPerfil.html" title="Minha Conta"><b>Minha Conta</b></a>
+                <a href="MeuPerfil.php" title="Minha Conta"><b>Minha Conta</b></a>
             </div>
             <div class="options2">
                 <a href=""><img src="../imgs/icon_favorite.png" alt="" width="40px"></a>

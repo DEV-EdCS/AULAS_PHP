@@ -4,7 +4,7 @@ require 'config.php';
 
 // Verificar se o usuário está logado e é um administrador
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: Login.php');
     exit();
 }
 
@@ -16,7 +16,7 @@ $user = $stmt->fetch();
 
 // Se não for administrador, redirecionar para login
 if ($user['perfil'] !== 'administrador') {
-    header('Location: login.php');
+    header('Location: Login.php');
     exit();
 }
 

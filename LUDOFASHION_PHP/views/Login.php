@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <section class="logar">
         <div class="login">
-        <form action="login.php" method="post">
+        <form action="Login.php" method="post">
             <h1>Login</h1>
             <div class="formatar">
                 <div class="preencher">

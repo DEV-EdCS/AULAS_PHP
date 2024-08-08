@@ -78,7 +78,7 @@ try {
             </div>
             <div class="options2">
                 <a href=""><img src="../imgs/icon_favorite.png" alt="" width="40px"></a>
-                <a href="../views/ListadeDesejo.html" title="Lista de Desejos"><b>Lista de Desejos</b></a>
+                <a href="ListadeDesejo.php" title="Lista de Desejos"><b>Lista de Desejos</b></a>
             </div>
             <div class="options3">
                 <a href=""><img src="../imgs/icon_categorias.png" alt="" width="40px"></a>
@@ -95,7 +95,7 @@ try {
                 <p>Gerenciar e proteger sua conta</p>
             </div>
 
-            <form class="conteudo">
+            <form for="MeuPerfil.php" class="conteudo">
                 <div class="question">
                     <label for="nome">Nome:</label>
                     <label for="email">Email:</label>

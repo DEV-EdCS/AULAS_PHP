@@ -1,5 +1,6 @@
 <?php
 require 'conexao.php'; // Inclui a conexão com o banco de dados
+include 'MeuPerfil.php'
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recebe os dados do formulário
@@ -74,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <section class="conteudo">
         <h1>Bem vindo à Ludo Fashion</h1>
-        <form  method="post" action="CadastoUser.php">
+        <form  method="post" action="CadastroUser.php">
             <div>
                 <div class="formulario1">
                     <label for="nome"><b>Nome:</b></label>
@@ -106,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input class="btn-enviar" type="submit" class="btn-envio" value="ENVIAR">
                 </div>
                 <div>
-                    <a href="/views/Login.php">Já tem uma conta cadastrada?</a>
+                    <a href="Login.php">Já tem uma conta cadastrada?</a>
                 </div>
             </div>
         </form>
