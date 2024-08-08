@@ -1,4 +1,5 @@
 <?php
+// Faz a conexão com o banco
 
 try {
     $host = 'localhost'; // Ou o IP do servidor MySQL

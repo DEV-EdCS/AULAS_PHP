@@ -1,6 +1,4 @@
 <?php
-// CadastroUser.php
-
 require 'conexao.php'; // Inclui a conexão com o banco de dados
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -76,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <section class="conteudo">
         <h1>Bem vindo à Ludo Fashion</h1>
-        <form  method="post" action="cadastrar">
+        <form  method="post" action="CadastoUser.php">
             <div>
                 <div class="formulario1">
                     <label for="nome"><b>Nome:</b></label>
