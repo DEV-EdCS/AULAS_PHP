@@ -2,7 +2,7 @@
 // Login.php
 
 session_start(); // Inicia a sessão
-require 'config.php'; // Inclui a conexão com o banco de dados
+require 'conexao.php'; // Inclui a conexão com o banco de dados
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recebe os dados do formulário
@@ -75,16 +75,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <section class="logar">
         <div class="login">
-        <form action="login">
+        <form action="login.php" method="post">
             <h1>Login</h1>
             <div class="formatar">
                 <div class="preencher">
-                    <label for="">E-mail</label><br>
-                    <input class="input" type="text">
+                    <label for="email">E-mail</label><br>
+                    <input class="input" type="text" name="email" id="email">
                 </div>
                 <div class="preencher">
-                    <label for="">Senha</label><br>
-                    <input class="input" type="text">
+                    <label for="senha">Senha</label><br>
+                    <input class="input" type="text" name="senha" id="senha">
                 </div>
                 <div class="preencher">
                     <input type="submit" id="botao" class="botao" value="Login">

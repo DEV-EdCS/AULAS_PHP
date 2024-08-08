@@ -2,7 +2,7 @@
 // MeuPerfil.php
 
 session_start(); // Inicia a sessão
-require 'config.php'; // Inclui a conexão com o banco de dados
+require 'conexao.php'; // Inclui a conexão com o banco de dados
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
