@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Oswald-medium', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #ff1493;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+header .search-bar input {
+     border: none;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+header .search-bar button {
+    border: none;
+    background: none;
+    padding: 0.5rem;
+}
+
+header nav a {
+    color: #fff;
+    margin-left: 1rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+.profile-container {
+    display: flex;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+aside {
+    flex: 1;
+    min-width: 200px;
+}
+
+aside nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside nav ul li {
+    margin-bottom: 1rem;
+}
+
+aside nav ul li a {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+aside nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    flex: 3;
+    padding-left: 2rem;
+    min-width: 300px;
+}
+
+.profile-header {
+    margin-bottom: 2rem;
+}
+
+.profile-header h2 {
+    font-size: 2rem;
+}
+
+.profile-content form {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffe4e1;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.profile-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.profile-field label {
+    flex: 1;
+    font-weight: bold;
+}
+
+.profile-field span {
+    flex: 2;
+}
+
+.profile-field a {
+    flex: 1;
+    color: #ff1493;
+    text-decoration: none;
+}
+
+.profile-field a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #ff1493;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+button:hover {
+    background-color: #e01383;
+}
+
+footer {
+    background-color: #ff1493;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+footer .social-media {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+footer .social-media a img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    main {
+        padding-left: 0;
+    }
+
+    .profile-field {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-field label,
+    .profile-field span,
+    .profile-field a {
+        flex: none;
+        text-align: left;
+        margin-bottom: 0.5rem;
+    }
+
+    button {
+        align-self: stretch;
+    }
+}
