@@ -12,5 +12,5 @@
         carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
     }
 
-    setInterval(moveCarousel, 3000); // 3000ms = 3s
+    setInterval(moveCarousel, 5000); // 5000ms = 5s
 
