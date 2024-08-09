@@ -1,4 +1,4 @@
-    const carouselSlide = document.querySelector('.carousel-slide');
+const carouselSlide = document.querySelector('.carousel-slide');
     const images = document.querySelectorAll('.carousel-slide img');
 
     let counter = 0;
@@ -13,4 +13,3 @@
     }
 
     setInterval(moveCarousel, 5000); // 5000ms = 5s
-
