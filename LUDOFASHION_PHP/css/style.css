@@ -11,19 +11,28 @@ ul {
     justify-content: space-between;
 }
 
+ /* Estilização global */
 * {
     text-decoration: none;
-    font-family: "Oswald", sans-serif;
+    font-family: "Verdana", "Helvetica Neue", sans-serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/* Header */
 header {
     background-color: var(--cor-primaria);
     display: flex;
     padding: 1rem;
     align-items: center;
+}
+
+.icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 3rem;
 }
 
 #form-buscar {
@@ -42,11 +51,16 @@ header {
     outline: none;
 }
 
-.icon-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 0.5rem;
+/* Nav. icones */
+.navegacao {
+    display: inline-flex;
+    align-items: center; /* Alinha verticalmente no centro */
+    gap: 8px; /* Espaçamento entre o ícone e o texto */
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    color: var(--branco); /* Mantém a cor do texto original */
+    font-size: 1.2rem;
+    margin-right: 2rem;
+
 }
 
 #btn-buscar {
@@ -69,21 +83,25 @@ nav a:first-child {
     border-right: 1px solid var(--preto);
 }
 
-#banner {
+.carousel-container {
     width: 100%;
-    background-image: url("../imgs/Banner_rosa.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 400px;
+    max-width: 800px; /* Ajuste conforme necessário */
+    overflow: hidden;
     position: relative;
+    margin: auto;
 }
 
-#txt-banner {
-    position: absolute;
-    top: 10%;
-    right: 10%;
-    text-align: center;
+.carousel-slide {
+    display: flex;
+    width: 200%; /* Deve ser 100% vezes o número de slides */
+    transition: transform 0.5s ease-in-out;
 }
+
+.carousel-slide img {
+    width: 100%;
+    flex: 1 0 100%;
+}
+
 
 .conteudo h1 {
     text-align: center;
