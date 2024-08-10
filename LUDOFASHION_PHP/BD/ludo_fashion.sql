@@ -21,6 +21,7 @@ CREATE TABLE usuarios (
 INSERT INTO usuarios (nome, email, senha, perfil) VALUES 
 ('Administrador', 'admin@gmail.com', SHA2('senha_admin', 256), 'administrador');
 
+
 -- Criação da Tabela de produtos
 CREATE TABLE produtos (
 id INT PRIMARY KEY AUTO_INCREMENT,

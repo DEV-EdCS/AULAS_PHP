@@ -1,3 +1,4 @@
+/* header ludofashion */
 :root {
     --cor-primaria: #F464C3;
     --cor-secundaria: #3d1c31;
@@ -64,36 +65,160 @@ nav a:first-child {
     border-right: 1px solid var(--preto);
 }
 
-.topo {
-    margin-top: 4rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
-    margin-bottom: 4rem;
+/* Estilo para o painel de controle */
+.card {
+    border-radius: 0.3rem;
+}
+
+.card-header {
+    font-size: 1.25rem;
+    background-color: var(--cor-primaria);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.titulo-painel {
+    color: var(--preto);
+}
+
+.card-body {
+    background-color:var(--cor-terciaria);
+    padding: 1rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.card-title {
+    font-size: 1.125rem;
+}
+
+.card-text {
+    font-size: 2rem;
+}
+
+/* Painel de controle */
+.container-fluid {
+    margin: 2rem;
+}
+
+/* Estilo para os botões */
+.btn-edicao {
     display: flex;
     justify-content: space-between;
 }
 
-.tabela {
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    border-color: transparent;
-    background-color: #F464C3;
-    padding: 30px;
-    margin-left: 120px;
-    margin-right: 120px;
-    border: 2px solid;
+.btn-success {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--cor-terciaria);
+    border-color: var(--cor-terciaria);
 }
 
-.butao {
-    background-color: var(--cor-primaria);
+.btn-success:hover {
+    border-radius: 5px;
+    padding: 10px;
     color: var(--branco);
-    border: none;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 20px;
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
 }
 
-h1 {
-    font-size: 25px;
+.btn-warning {
+    border-radius: 3px;
+    padding: 6px;
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.btn-warning:hover {
+    border-radius: 3px;
+    padding: 6px;
+    color: var(--branco);
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.btn-danger {
+    border-radius: 5px;
+    padding: 10px;
+    color: var(--branco);
+    background-color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+    cursor:pointer
+}
+
+.btn-danger:hover {
+    border-radius: 5px;
+    padding: 10px;
+    color: var(--branco);
+    background-color: var(--preto);
+    border-color: var(--preto);
+
+}
+
+/* Estilo para a tabela */
+.table {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.table th, .table td {
+    text-align: center;
+}
+
+.table th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+/* Estilo para as imagens dos produtos */
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    max-width: 100%;
+}
+
+/* Estilo para o formulário */
+.form-control {
+    margin-bottom: 1rem;
+}
+
+/* Estilo Add produto */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo1 {
+    margin-top: 2rem;
+}
+
+.titulo2 {
+    margin-top: 2rem;
+    margin-bottom: 0;
+    margin-right: 20%;
+    margin-left: 20%;
+    text-align: center;
+    background-color: var(--cor-secundaria);
+    padding: 2rem;
+}
+
+input {
+    width: 100%;
+    margin-top: 0.25rem;
+    margin-bottom: 2rem;
+}
+
+h4.a {
+    color: var(--branco);
+}
+
+.cabecalho-add {
+    display: flex;
+    flex-direction: column
 }
