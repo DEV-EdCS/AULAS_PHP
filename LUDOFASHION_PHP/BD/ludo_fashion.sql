@@ -20,3 +20,13 @@ CREATE TABLE usuarios (
 -- Inserção do administrador inicial
 INSERT INTO usuarios (nome, email, senha, perfil) VALUES 
 ('Administrador', 'admin@gmail.com', SHA2('senha_admin', 256), 'administrador');
+
+-- Criação da Tabela de produtos
+CREATE TABLE produtos (
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(100),
+tamanho VARCHAR(50),
+cor VARCHAR(50),
+preco VARCHAR(50),
+descricao VARCHAR(150)
+);
