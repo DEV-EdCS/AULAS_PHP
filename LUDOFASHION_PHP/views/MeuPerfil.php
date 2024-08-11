@@ -50,26 +50,8 @@ try {
     <title>Perfil - LudoFashion</title>
     <link rel="stylesheet" href="../css/MeuPerfil.css">
 </head>
-<header>
-    <a href="" class="icon-link">
-        <img src="../imgs/Logo_LudoFashion.png" alt="" title="Home" width="100px">
-    </a>
 
-    <form action="" id="form-buscar">
-        <input type="searh" name="Buscar" id="buscar" placeholder="O que você procura?">
-        <button type="submit" id="btn-buscar"><img src="../imgs/icon_search.png" alt="" width="30px"></button>
-    </form>
-
-    <a href="" class="icon-link">
-        <img src="../imgs/icon_personB.png" alt="" width="40px">
-        Cadastre-se
-    </a>
-
-    <a href="" class="icon-link">
-        <img src="../imgs/icon_helpB.png" alt="" width="40px">
-        Dúvidas
-    </a>
-</header>
+<?php include '../views/header.php'; ?>
 
 <nav>
 
@@ -134,60 +116,9 @@ try {
             </form>
         </div>
     </section>
-    <footer>
-        <div class="container">
-            <div class="rodape-text">
-                <h2>Institucional</h2>
-                <ul>
-                    <a href="">
-                        <li>Quem Somos?</li>
-                    </a>
-                </ul>
-            </div>
-            <div class="rodape-text">
-                <h2>Ajuda</h2>
-                <ul>
-                    <a href="">
-                        <li>Central de ajuda</li>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="">
-                        <li>Dúvidas</li>
-                    </a>
-                </ul>
-            </div>
-            <div class="rodape-text">
-                <h2>Navegue Pelo Site</h2>
-                <ul>
-                    <a href="">
-                        <li>Roupas mais procuradas</li>
-                    </a>
-                </ul>
-                <ul>
-                    <a href="">
-                        <li>Principais marcas</li>
-                    </a>
-                </ul>
-            </div>
-            <div>
-                <h2>Redes Sociais</h2>
-                <div class="social-media">
-                    <a href=""><img src="imgs/icon_whatsapp.png" title="Fale conosco via WhatsApp" alt="WhatsApp"
-                            width="30px"></a>
-                    <a href=""><img src="imgs/icon_instagram.png" title="Siga para mais novidades" alt="Instagram"
-                            width="30px"></a>
-                    <a href=""><img src="imgs/icon_facebook.png" title="Acompanhe as novidades no Face" alt="Facebook"
-                            width="30px"></a>
-                    <a href=""><img src="imgs/icon_twitter.png" title="Nosso perfil no X" alt="Twitter"
-                            width="30px"></a>
-                    <a href=""><img src="imgs/icon_tiktok.png" title="As trends do momento" alt="TikTok"
-                            width="30px"></a>
-                </div>
-            </div>
-        </div>
-        <p>© 2024 LudoFashion. Todos os direitos reservados.</p>
-    </footer>
+
+    <?php include '../views/footer.php'; ?>
+    
 </body>
 
 </html>

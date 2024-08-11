@@ -44,26 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Perfil - LudoFashion</title>
     <link rel="stylesheet" href="../css/Login.css">
 </head>
-<header>
-    <a href="" class="icon-link">
-        <img src="../imgs/Logo_LudoFashion.png" alt="" title="Home" width="100px">
-    </a>
 
-    <form action="" id="form-buscar">
-        <input type="searh" name="Buscar" id="buscar" placeholder="O que você procura?">
-        <button type="submit" id="btn-buscar"><img src="../imgs/icon_search.png" alt="" width="30px"></button>
-    </form>
-
-    <a href="" class="icon-link">
-        <img src="../imgs/icon_personB.png" alt="" width="40px">
-        Cadastre-se
-    </a>
-
-    <a href="" class="icon-link">
-        <img src="../imgs/icon_helpB.png" alt="" width="40px">
-        Dúvidas
-    </a>
-</header>
+<?php include '../views/header.php'; ?>
 
 <nav>
 
@@ -94,9 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <p>OU</p>
                 </div>
                 <div class="opcoes">
-                    <a href="https://mail.google.com/"><img src="../imgs/icon_google.png" alt="" width="40px"></a>
+                    <a href="https://mail.google.com/"><img src="../images/icon_google.png" alt="" width="40px"></a>
 
-                    <a href="https://www.facebook.com/"><img src="../imgs/icon_face.png" alt="" width="40px"></a>
+                    <a href="https://www.facebook.com/"><img src="../images/icon_face.png" alt="" width="40px"></a>
                 </div class="opcoes1">
                     <a href="">Cadastrar</a>
                     <a href="">Precisa de ajuda?</a>
@@ -105,6 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </div>
     </section>
+
+    <?php include '../views/footer.php'; ?>
 
 </body>
 

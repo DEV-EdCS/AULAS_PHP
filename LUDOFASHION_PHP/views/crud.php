@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';
+require 'conexao.php';
 
 // Verificar se o usuário está logado e é um administrador
 if (!isset($_SESSION['user_id'])) {

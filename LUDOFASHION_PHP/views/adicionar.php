@@ -9,10 +9,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Cria a conexão com o banco de dados
-$conexao = (new Conexao())->conectar();
+$conn = (new Conexao())->conectar();
 
 // Cria uma instância da classe Produtos
-$produto = new Produtos($conexao);
+$produto = new Produtos($conn);
 
 // Verifica se a requisição é do tipo POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Redireciona para a página inicial
-    header('Location: index.php');
+    header('Location: views/ProdutosCadastrados.php');
     exit(); // Certifica de que o script é encerrado após o redirecionamento
 }
 ?>
@@ -56,12 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<?php include 'views/header.php'; ?>
     <div class="container">
         <!-- Banner com o nome da loja -->
-        <header class="cabecalho-add">
+        <div class="cabecalho-add">
             <h1 class="titulo1">Catálogo Ludo Fashion</h1><br>
             <p>Adicionar Novo Produto</p><br>
-        </header>
+        </div>
 
         <!-- Formulário de Adição -->
          <div>
@@ -99,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <!-- Inclui o JS personalizado -->
     <script src="js/script.js"></script>
+    <?php include 'views/footer.php'; ?>
 </body>
 </html>
 

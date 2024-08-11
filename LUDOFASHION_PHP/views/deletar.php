@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 $conn = (new Conexao())->conectar();
 
 // Cria uma instância da classe Produto
-$produto = new Produto($conn);
+$produto = new Produtos($conn);
 
 // Obtém o ID do produto a ser deletado
 $id = $_GET['id'] ?? null;
