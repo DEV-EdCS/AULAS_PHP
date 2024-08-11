@@ -9,10 +9,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Cria a conexão com o banco de dados
-$conexao = (new Conexao())->conectar();
+$conn = (new Conexao())->conectar();
 
-// Cria uma instância da classe Carro
-$carro = new Produto($conexao);
+// Cria uma instância da classe Produto
+$produto = new Produto($conn);
 
 // Obtém o ID do produto a ser deletado
 $id = $_GET['id'] ?? null;
@@ -22,6 +22,6 @@ if ($id) {
 }
 
 // Redireciona para a página inicial
-header('Location: index.php');
+header('Location: ProdutosCadastrados.php');
 exit(); // Certifique-se de que o script é encerrado após o redirecionamento
 ?>

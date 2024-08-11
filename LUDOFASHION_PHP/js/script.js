@@ -29,3 +29,18 @@ function moveCarousel() {
 
 // Define um intervalo de tempo para chamar a função moveCarousel
 setInterval(moveCarousel, 5000); // 5000ms = 5s
+
+
+// Script para confirmação de exclusão de registros
+document.addEventListener('DOMContentLoaded', function() {
+    const deleteButtons = document.querySelectorAll('.btn-danger');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            const confirmDelete = confirm('Tem certeza de que deseja excluir os registros selecionados?');
+            if (!confirmDelete) {
+                event.preventDefault(); // Cancela a ação se o usuário não confirmar
+            }
+        });
+    });
+});

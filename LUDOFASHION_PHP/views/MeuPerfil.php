@@ -4,6 +4,16 @@
 session_start(); // Inicia a sessão
 require 'conexao.php'; // Inclui a conexão com o banco de dados
 
+$conn = (new Conexao())->conectar(); // Instancia a classe Conexao e obtém a conexão
+
+// Verifique se a conexão foi bem-sucedida
+if ($conn === null) {
+    die("Erro ao conectar com o banco de dados");
+}
+
+// Usa-se $conn para preparar e executar consultas
+$stmt = $conn->prepare("SELECT * FROM usuarios WHERE id = ?");
+
 // Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
     header('Location: Login.php'); // Redireciona para a página de login se não estiver logado

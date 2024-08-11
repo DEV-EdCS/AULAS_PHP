@@ -4,9 +4,9 @@ require 'conexao.php';
 require 'produtos.php';
 
 // Cria a conexão com o banco de dados
-$conexao = (new Conexao())->conectar();
+$conn = (new Conexao())->conectar();
 // Cria uma instância da classe Produtos
-$produto = new Produtos($conexao);
+$produto = new Produtos($conn);
 
 // Obtém a lista de produtos do banco de dados
 $produtos = $produto->listar();
@@ -75,19 +75,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
     </div>
 
     <!-- Formulário para deletar produtos selecionados -->
+     
     <form action="index.php" method="post">
         <input type="hidden" name="deletar" value="1">
 
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
-                <tr class="tabela">
-                    <th>Selecionar</th>
-                    <th>Foto</th>
-                    <th>Nome</th>
-                    <th>Cor</th>
-                    <th>Tamanho</th>
-                    <th>Descrição</th>
-                    <th>Ações</th>
+        <table class="table">
+            <thead>
+                <tr>
+                   <th>Selecionar</th>
+                   <th>Foto</th></div>
+                   <th>Nome</th></div>
+                   <th>Cor</th>
+                   <th>Tamanho</th>
+                   <th>Descrição</th>
+                   <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -100,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                         <td>
                             <!-- Exibe a foto do produto, se disponível -->
                             <?php if ($produto['foto']): ?>
-                            <img src="uploads/<?= $produto['foto'] ?>" width="218" height="148" alt="Foto do Produto">
+                            <img src="uploads/<?= $produto['foto'] ?>" width="348px" height="218px" alt="Foto do Produto">
                                 <?php endif; ?>
                         </td>
                         <td><?= htmlspecialchars($produto['nome']) ?></td>

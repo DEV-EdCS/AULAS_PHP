@@ -1,7 +1,9 @@
 <?php
 
 session_start(); // Inicia a sessão
-require 'conexao.php'; // Inclui a conexão com o banco de dados
+require_once '../views/conexao.php'; // Inclui a conexão com o banco de dados
+
+$conn = (new Conexao())->conectar();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recebe os dados do formulário

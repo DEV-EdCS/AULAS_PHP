@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         list($larguraOriginal, $alturaOriginal) = getimagesize($fotoTmp);
         $imagemOriginal = imagecreatefromjpeg($fotoTmp);
         $imagemRedimensionada = imagecreatetruecolor(218, 348);
-        imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 218, 348, $larguraOriginal, $alturaOriginal);
+        imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 348, 218, $larguraOriginal, $alturaOriginal);
         imagejpeg($imagemRedimensionada, $destino);
 
         // Adiciona o produto no banco de dados
