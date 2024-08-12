@@ -1,9 +1,8 @@
 <?php
 require 'conexao.php'; // Inclui a conexão com o banco de dados
-include 'views/MeuPerfil.php';
+// include 'MeuPerfil.php';
 
 $conn = (new Conexao())->conectar();
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recebe os dados do formulário
@@ -43,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - LudoFashion</title>
-    <link rel="stylesheet" href="css/CadastroUser.csss">
+    <link rel="stylesheet" href="../css/CadastroUser.css">
 </head>
 
 <body>

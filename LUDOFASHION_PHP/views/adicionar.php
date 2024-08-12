@@ -1,7 +1,7 @@
 <?php
 // Inclui os arquivos de conexão e da classe Produtos
-require 'views/conexao.php';
-require 'views/produtos.php';
+require 'conexao.php';
+require 'produtos.php';
 
 // Habilita a exibição de erros para depuração
 ini_set('display_errors', 1);
