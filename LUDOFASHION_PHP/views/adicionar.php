@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Redireciona para a página inicial
-    header('Location: views/ProdutosCadastrados.php');
+    header('Location: ProdutosCadastrados.php');
     exit(); // Certifica de que o script é encerrado após o redirecionamento
 }
 ?>

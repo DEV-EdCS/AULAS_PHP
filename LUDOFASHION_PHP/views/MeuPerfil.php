@@ -1,6 +1,4 @@
 <?php
-// MeuPerfil.php
-
 session_start(); // Inicia a sessão
 require 'conexao.php'; // Inclui a conexão com o banco de dados
 
@@ -88,36 +86,30 @@ try {
             </div>
 
             <form for="MeuPerfil.php" class="conteudo">
-         
-                <div class="question">
-                    <label for="nome">Nome:</label>
-                    <label for="email">Email:</label>
-                    <label for="phone">Número de telefone:</label>
-                    <label for="cpf">CPF:</label>
-                    <label for="nascimento">Data de Nascimento</label>
+                <div class="nome-usuario">
+                <h1>Perfil de <?php echo htmlspecialchars($user['nome']); ?></h1>
+                <a class="btn-delete" href="logout.php">Sair</a>
                 </div>
-                <div class="resposta">
-                    <input type="text" name="nome" id="nome" value="" required placeholder="Seu nome completo">
-
-                    <input type="text" name="email" id="email" value="" required placeholder="Seu email">
-
-                    <input type="tel" name="phone" id="phone" value="" required placeholder="(xx) xxxxx-xxxx">
-
-                    <input type="number" name="cpf" id="cpf" value="" required placeholder="Digite seu CPF">
-
-                    <input type="date" name="nascimento" id="nascimento" value="" required
-                        placeholder="Sua data de nascimento">
-
+                
+                <div class="info-usuario">
+                <p><strong>Nome:</strong> <?php echo htmlspecialchars($user['nome']); ?></p>
+                <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
+                <p><strong>Telefone:</strong> <?php echo htmlspecialchars($user['telefone']); ?></p>
+                <p><strong>CPF:</strong> <?php echo htmlspecialchars($user['cpf']); ?></p>
+                <p><strong>Data de Nascimento:</strong> <?php echo htmlspecialchars($user['nascimento']); ?></p>
                 </div>
+                <!-- Outros dados do usuário podem ser adicionados aqui -->
+
+                 
+
                 <div class="modificar">
                     <input class="btn-edit" type="submit" value="Editar">
-                    <input class="btn-envia" type="submit" value="Gravar">
                 </div>
             </form>
         </div>
     </section>
 
-    <?php include '../views/footer.php'; ?>
+    <?php include 'footer.php'; ?>
     
 </body>
 

@@ -83,8 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <a href="https://www.facebook.com/"><img src="../images/icon_face.png" alt="" width="40px"></a>
                 </div>
                 <div class="opcoes1">
-                    <a href="">Cadastrar</a>
-                    <a href="">Precisa de ajuda?</a>
+                    <a href="CadastroUser.php">Cadastrar</a>
+                    <a href="Ajuda.html">Precisa de ajuda?</a>
                 </div>
             </div>
         </form>

@@ -15,8 +15,8 @@
 
 
     <nav class="opcoes">
-        <a href="">Catálogo</a>
-        <a href="">Sobre a Loja</a>
+        <a href="views/produtos.php">Catálogo</a>
+        <a href="views/Sobre.php">Sobre a Loja</a>
     </nav>
     <main>
 

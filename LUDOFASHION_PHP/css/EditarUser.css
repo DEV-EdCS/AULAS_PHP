@@ -44,8 +44,8 @@ nav a:first-child {
 
 .conteudo {
     background-color: var(--cor-terciaria);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 40% 60%;
     padding: 30px;
 }
 
@@ -125,6 +125,17 @@ nav a:first-child {
     background-color: var(--branco);
     cursor: pointer;
     color: var(--cor-secundaria);
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn-envia {
+    background-color: var(--cor-secundaria);
+    cursor: pointer;
+    color: var(--branco);
     padding: 0.8rem;
     border-radius: 0.5rem;
     border: none;

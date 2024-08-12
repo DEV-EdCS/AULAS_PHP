@@ -12,7 +12,7 @@ CREATE TABLE usuarios (
     senha VARCHAR(100) NOT NULL,
     telefone VARCHAR(100) NOT NULL,
     cpf CHAR(11) NOT NULL,
-    nascimento CHAR(8) NOT NULL,
+    nascimento VARCHAR(10) NOT NULL,
     perfil ENUM('normal', 'administrador') DEFAULT 'normal',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
