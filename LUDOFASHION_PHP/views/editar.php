@@ -9,10 +9,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Cria a conexão com o banco de dados
-$conexao = (new Conexao())->conectar();
+$conn = (new Conexao())->conectar();
 
 // Cria uma instância da classe Produtos
-$produto = new Produtos($conexao);
+$produto = new Produtos($conn);
 
 // Verifica se um ID de Produtos foi passado
 $id = $_GET['id'] ?? null;
@@ -36,19 +36,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $descricao = $_POST['descricao'];
     $fotoNome = $dadosProduto['foto'];
 
-    // Lida com o upload da foto
-    if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
+     // Lida com o upload da foto
+     if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
         $fotoTmp = $_FILES['foto']['tmp_name'];
-        $fotoNome = uniqid() . '.jpg'; // Gera um nome único para a foto
+        $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+        $fotoNome = uniqid() . '.' . $extensao; // Gera um nome único para a foto
         $destino = 'uploads/' . $fotoNome;
 
-        // Redimensiona a imagem para 218x348 px
-       list($larguraOriginal, $alturaOriginal) = getimagesize($fotoTmp);
-        $imagemOriginal = imagecreatefromjpeg($fotoTmp);
-        $imagemRedimensionada = imagecreatetruecolor(218, 348);
-        imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 218, 348, $larguraOriginal, $alturaOriginal);
-        imagejpeg($imagemRedimensionada, $destino);
+        // Verifica o tipo de arquivo
+        if ($extensao == 'jpg' || $extensao == 'jpeg') {
+            // Redimensiona a imagem para 218x348 px
+            list($larguraOriginal, $alturaOriginal) = getimagesize($fotoTmp);
+            $imagemOriginal = imagecreatefromjpeg($fotoTmp);
+            $imagemRedimensionada = imagecreatetruecolor(218, 348);
+            imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 218, 348, $larguraOriginal, $alturaOriginal);
+            imagejpeg($imagemRedimensionada, $destino);
+            imagedestroy($imagemOriginal);
+            imagedestroy($imagemRedimensionada);
+        } else {
+            echo "Formato de imagem não suportado.";
+            exit();
+        }
     }
+
 
     // Atualiza os dados do produto no banco de dados
     $produto->atualizar($id, $nome, $cor, $tamanho, $descricao, $fotoNome);
@@ -81,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h4 class="mb-0">Formulário de Edição</h4>
             </div>
             <div class="card-body">
-                <form action="editar.php?id=<?= $id ?>" method="post" enctype="multipart/form-data">
+            <form action="editar.php?id=<?= htmlspecialchars($id) ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nome">Nome:</label>
                         <input type="text" name="nome" id="nome" class="form-control" value="<?= htmlspecialchars($dadosProduto['nome']) ?>" required>
@@ -102,9 +112,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="foto">Foto:</label>
                         <?php if ($dadosProduto['foto']): ?>
                             <div>
-                                <img src="uploads/<?= $dadosProduto['foto'] ?>" width="218" height="148" alt="Foto do Produto">
+                                <img src="uploads/<?= htmlspecialchars($dadosProduto['foto']) ?>" width="218" height="148" alt="Foto do Produto">
                             </div>
-                        <?php endif; ?>
+                            <?php endif; ?>
                         <input type="file" name="foto" id="foto" class="form-control-file" accept="image/jpeg">
                     </div>
                     <button type="submit" class="btn btn-warning">Atualizar Produto</button>
@@ -113,10 +123,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 
-    <!-- Inclui o JS do Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Inclui o JS personalizado -->
     <script src="js/script.js"></script>
 </body>

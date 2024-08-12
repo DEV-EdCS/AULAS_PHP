@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
     </a>
 
     <form action="" id="form-buscar">
-        <input type="searh" name="Buscar" id="buscar" placeholder="O que você procura?">
+        <input type="search" name="Buscar" id="buscar" placeholder="O que você procura?">
         <button type="submit" id="btn-buscar"><img src="../CRUD LUDO FASHION/imgs/icon_search.png" alt="" width="30px"></button>
     </form>
 
@@ -77,7 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
     <!-- Formulário para deletar produtos selecionados -->
      
     <form action="index.php" method="post">
-        <input type="hidden" name="deletar" value="1">
 
         <table class="table">
             <thead>
@@ -116,6 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <input type="hidden" name="deletar" value="1">
 
     </form>
 </div>

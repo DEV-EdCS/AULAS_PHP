@@ -1,7 +1,7 @@
 <?php
 // Inclui os arquivos de conexão e da classe Produtos
-require 'conexao.php';
-require 'produtos.php';
+require 'views/conexao.php';
+require 'views/produtos.php';
 
 // Habilita a exibição de erros para depuração
 ini_set('display_errors', 1);
@@ -27,12 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fotoNome = uniqid() . '.jpg'; // Gera um nome único para a foto
         $destino = 'uploads/' . $fotoNome;
 
-       // Redimensiona a imagem para 218x348 px
-        list($larguraOriginal, $alturaOriginal) = getimagesize($fotoTmp);
-        $imagemOriginal = imagecreatefromjpeg($fotoTmp);
-        $imagemRedimensionada = imagecreatetruecolor(218, 348);
-        imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 348, 218, $larguraOriginal, $alturaOriginal);
-        imagejpeg($imagemRedimensionada, $destino);
+        // Verifica se o arquivo é uma imagem JPEG
+        if (exif_imagetype($fotoTmp) === IMAGETYPE_JPEG) {
+            // Redimensiona a imagem para 218x348 px
+            list($larguraOriginal, $alturaOriginal) = getimagesize($fotoTmp);
+            $imagemOriginal = imagecreatefromjpeg($fotoTmp);
+            $imagemRedimensionada = imagecreatetruecolor(218, 348);
+
+            // Redimensiona mantendo a proporção da imagem original
+            imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 218, 348, $larguraOriginal, $alturaOriginal);
+            imagejpeg($imagemRedimensionada, $destino);
+            imagedestroy($imagemOriginal);
+            imagedestroy($imagemRedimensionada);
+        } else {
+            echo "Erro: A foto deve ser uma imagem JPEG.";
+            exit();
+        }
 
         // Adiciona o produto no banco de dados
         $produto->adicionar($nome, $cor, $tamanho, $descricao, $fotoNome);

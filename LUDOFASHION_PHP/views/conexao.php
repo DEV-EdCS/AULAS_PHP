@@ -1,26 +1,32 @@
 <?php
 // Declaração da classe Conexao
 
-
 class Conexao {
-    // Atributos para armazenar os detalhes da conexão
- private $host = 'localhost';
- private $dbname = 'ludo_fashion';
- private $usuario = 'root';
- private $senha = '';
- 
+    private $host;
+    private $dbname;
+    private $usuario;
+    private $senha;
+    
+    // Construtor para inicializar a conexão
+    public function __construct($host = 'localhost', $dbname = 'ludo_fashion', $usuario = 'root', $senha = '') {
+        $this->host = $host;
+        $this->dbname = $dbname;
+        $this->usuario = $usuario;
+        $this->senha = $senha;
+    }
+    
     // Método para conectar ao banco de dados
     public function conectar() {
         try {
-            // Cria uma nova instância de PDO para a conexão com o banco de dados
             $conn = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->usuario, $this->senha);
-            // Define o modo de erro do PDO para exceções
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // Retorna a conexão
             return $conn;
         } catch (PDOException $e) {
-            // Em caso de erro, exibe a mensagem de erro
-            echo 'Erro: ' . $e->getMessage();
+            // Log de erro (recomendado para produção)
+            error_log('Erro de conexão: ' . $e->getMessage());
+            // Mensagem genérica para o usuário
+            echo 'Não foi possível conectar ao banco de dados.';
+            exit(); // Encerra o script em caso de falha
         }
     }
 }

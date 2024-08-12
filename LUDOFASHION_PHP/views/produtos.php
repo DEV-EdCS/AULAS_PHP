@@ -56,9 +56,14 @@ class Produtos
     // Método para deletar produtos
     public function deletar($ids)
     {
-        $ids = implode(',', array_map('intval', $ids));
+        // Sanitiza IDs
+        $ids = array_map('intval', $ids);
+        $ids = implode(',', $ids);
+
+        // Usa uma query preparada para evitar SQL Injection
         $sql = "DELETE FROM produtos WHERE id IN ($ids)";
-        $this->conn->exec($sql);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
     }
 }
 ?>

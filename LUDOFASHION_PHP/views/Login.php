@@ -25,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_perfil'] = $user['perfil'];
             header('Location: MeuPerfil.php'); // Redireciona para a página de perfil
+            exit(); // Encerra a execução do script para garantir que nenhum código abaixo do header() seja executado
+
         } else {
             echo "E-mail ou senha incorretos"; // Mensagem de erro
         }
@@ -67,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="preencher">
                     <label for="senha">Senha</label><br>
-                    <input class="input" type="text" name="senha" id="senha">
+                    <input class="input" type="password" name="senha" id="senha">
                 </div>
                 <div class="preencher">
                     <input type="submit" id="botao" class="botao" value="Login">
@@ -79,7 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <a href="https://mail.google.com/"><img src="../images/icon_google.png" alt="" width="40px"></a>
 
                     <a href="https://www.facebook.com/"><img src="../images/icon_face.png" alt="" width="40px"></a>
-                </div class="opcoes1">
+                </div>
+                <div class="opcoes1">
                     <a href="">Cadastrar</a>
                     <a href="">Precisa de ajuda?</a>
                 </div>

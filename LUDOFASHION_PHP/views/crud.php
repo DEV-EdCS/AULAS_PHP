@@ -1,14 +1,17 @@
 <?php
 session_start();
-require 'conexao.php';
+require 'views/conexao.php';
 
 // Verificar se o usuário está logado e é um administrador
 if (!isset($_SESSION['user_id'])) {
-    header('Location: Login.php');
+    header('views/Login.php');
     exit();
 }
 
 $user_id = $_SESSION['user_id'];
+
+$conn = (new Conexao())->conectar();
+$pdo = $conn;
 
 $stmt = $pdo->prepare('SELECT perfil FROM usuarios WHERE id = ?');
 $stmt->execute([$user_id]);
@@ -16,7 +19,7 @@ $user = $stmt->fetch();
 
 // Se não for administrador, redirecionar para login
 if ($user['perfil'] !== 'administrador') {
-    header('Location: Login.php');
+    header('Location: views/Login.php');
     exit();
 }
 
@@ -38,19 +41,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Exclusão de usuários selecionados
     if (isset($_POST['excluir'])) {
         $ids = $_POST['ids'];
-        $ids = implode(',', array_map('intval', $ids));
-        $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id IN ($ids)");
-        $stmt->execute();
+        $ids = array_map('intval', $ids); // Sanitiza os IDs
+        $placeholders = implode(',', array_fill(0, count($ids), '?')); // Prepara os placeholders
+        $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id IN ($placeholders)");
+        $stmt->execute($ids); // Passa os IDs como parâmetros
     }
 
     // Edição de informações de um usuário
     if (isset($_POST['editar'])) {
         $id = $_POST['id'];
         $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        $senha = isset($_POST['senha']) ? hash('sha256', $_POST['senha']) : null; // Verifica se a senha foi fornecida
         $telefone = $_POST['telefone'];
 
-        $stmt = $pdo->prepare('UPDATE usuarios SET email = ?, senha = ?, telefone = ? WHERE id = ?');
-        $stmt->execute([$email, $senha, $telefone, $id]);
+        $query = 'UPDATE usuarios SET email = ?, telefone = ?';
+        $params = [$email, $telefone];
+
+        if ($senha !== null) {
+            $query .= ', senha = ?';
+            $params[] = $senha;
+        }
+
+        $query .= ' WHERE id = ?';
+        $params[] = $id;
+
+        $stmt = $pdo->prepare($query);
+        $stmt->execute($params);
     }
 }
+?>

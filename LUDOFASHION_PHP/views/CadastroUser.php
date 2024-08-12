@@ -1,6 +1,9 @@
 <?php
 require 'conexao.php'; // Inclui a conexão com o banco de dados
-include 'MeuPerfil.php'
+include 'views/MeuPerfil.php';
+
+$conn = (new Conexao())->conectar();
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recebe os dados do formulário
@@ -34,13 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="pt=BR">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - LudoFashion</title>
-    <link rel="stylesheet" href="../css/CadastroUser.css">
+    <link rel="stylesheet" href="css/CadastroUser.csss">
 </head>
 
 <body>
@@ -50,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </a>
 
         <form action="" id="form-buscar">
-            <input type="searh" name="Buscar" id="buscar" placeholder="O que você procura?">
+            <input type="seacrh" name="Buscar" id="buscar" placeholder="O que você procura?">
             <button type="submit" id="btn-buscar"><img src="imgs/icon_search.png" alt="" width="30px"></button>
         </form>
 
@@ -87,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="formulario1">
                     <label for="password"><b>Senha:</b></label>
-                    <input class="preencher" type="senha" name="senha" id="senha" placeholder="   Insira sua senha" required>
+                    <input class="preencher" type="password" name="senha" id="senha" placeholder="   Insira sua senha" required>
                 </div>
                 <div class="formulario1">
                     <label for="telefone"><b>Telefone:</b></label>
@@ -95,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="formulario1">
                     <label for="cpf"><b>CPF:</b></label>
-                    <input class="preencher" type="number" name="cpf" id="cpf" placeholder="   Insira seu CPF" required>
+                    <input class="preencher" type="text" name="cpf" id="cpf" placeholder="   Insira seu CPF" required>
                 </div>
                 <div class="formulario1">
                     <label for="nascimento"><b>Data de Nascimento:</b></label>
