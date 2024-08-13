@@ -62,13 +62,29 @@ nav a:first-child {
     margin-bottom: 1rem;
 }
 
-.btn-delete {
+.btn-logout {
     background-color: var(--cor-primaria);
     cursor: pointer;
     color: var(--cor-secundaria);
     padding-left: 1.7rem;
     height: 3rem;
     width: 5.5rem;
+    align-items: center;
+    display: flex;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+.btn-delete {
+    background-color: var(--cor-secundaria);
+    cursor: pointer;
+    color: var(--branco);
+    padding: 1.7rem;
+    height: 3rem;
+    width: 7rem;
     align-items: center;
     display: flex;
     border-radius: 0.5rem;

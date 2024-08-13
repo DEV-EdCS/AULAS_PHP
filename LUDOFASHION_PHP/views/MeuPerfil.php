@@ -1,6 +1,7 @@
 <?php
 session_start(); // Inicia a sessão
 require 'conexao.php'; // Inclui a conexão com o banco de dados
+require 'Usuarios.php'; // Inclui o arquivo que contém a classe Usuarios
 
 $conn = (new Conexao())->conectar(); // Instancia a classe Conexao e obtém a conexão
 
@@ -86,10 +87,10 @@ try {
                 <p>Gerenciar e proteger sua conta</p>
             </div>
 
-            <form for="MeuPerfil.php" class="conteudo">
+            <form class="conteudo">
                 <div class="nome-usuario">
                 <h1>Perfil de <?php echo htmlspecialchars($user['nome']); ?></h1>
-                <a class="btn-delete" href="logout.php">Sair</a>
+                <a class="btn-logout" href="logout.php">Sair</a>
                 </div>
                 
                 <div class="info-usuario">
@@ -99,10 +100,14 @@ try {
                 <p><strong>CPF:</strong> <?php echo htmlspecialchars($user['cpf']); ?></p>
                 <p><strong>Data de Nascimento:</strong> <?php echo htmlspecialchars($user['nascimento']); ?></p>
                 </div>
-                <!-- Outros dados do usuário podem ser adicionados aqui -->
 
                 <div class="modificar">
                     <a href="EditarUser.php" class="btn-edit">Editar</a>
+
+                    <form action="DeletarUser.php" method="post" onsubmit="return confirm('Tem certeza que deseja deletar sua conta?');">
+                        <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                        <input class="btn-delete" type="submit" value="Deletar Conta">
+                    </form>
                 </div>
             </form>
         </div>

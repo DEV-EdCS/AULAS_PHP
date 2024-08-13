@@ -40,6 +40,15 @@ class Usuarios
         $stmt->bindParam(':nascimento', $nascimento);
         $stmt->execute();
     }
+
+    // Método para deletar um usuário por ID
+    public function deletar($id)
+    {
+        $sql = "DELETE FROM usuarios WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }
 
 ?>

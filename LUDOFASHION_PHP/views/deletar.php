@@ -31,5 +31,5 @@ if ($id) {
 
 // Redireciona para a página inicial
 header('Location: views/ProdutosCadastrados.php');
-exit(); // Certifique-se de que o script é encerrado após o redirecionamento
+exit(); // Certifica que o script é encerrado após o redirecionamento
 ?>
