@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="formulario1">
                     <label for="nascimento"><b>Data de Nascimento:</b></label>
-                    <input class="preencher" type="date" max="2006-08-07"name="nascimento" id="nascimento" placeholder="Sua data de nascimento" required>
+                    <input class="preencher" type="date" max="2006-08-07" name="nascimento" id="nascimento" placeholder="Sua data de nascimento" required>
                 </div>
             </div>
             <div class="enviar">

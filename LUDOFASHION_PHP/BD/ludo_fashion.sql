@@ -11,7 +11,7 @@ CREATE TABLE usuarios (
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(100) NOT NULL,
     telefone VARCHAR(100) NOT NULL,
-    cpf CHAR(11) NOT NULL,
+    cpf CHAR(14) NOT NULL,
     nascimento VARCHAR(10) NOT NULL,
     perfil ENUM('normal', 'administrador') DEFAULT 'normal',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

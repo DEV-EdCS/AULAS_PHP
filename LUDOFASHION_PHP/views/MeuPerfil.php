@@ -34,6 +34,7 @@ try {
     $telefone = $user['telefone'];
     $cpf = $user['cpf'];
     $nascimento = $user['nascimento'];
+
 } catch (PDOException $e) {
     echo "Erro ao buscar dados do perfil: " . $e->getMessage();
 }
@@ -100,10 +101,8 @@ try {
                 </div>
                 <!-- Outros dados do usuário podem ser adicionados aqui -->
 
-                 
-
                 <div class="modificar">
-                    <input class="btn-edit" type="submit" value="Editar">
+                    <a href="EditarUser.php" class="btn-edit">Editar</a>
                 </div>
             </form>
         </div>
