@@ -66,9 +66,9 @@ nav a:first-child {
     background-color: var(--cor-primaria);
     cursor: pointer;
     color: var(--cor-secundaria);
-    padding-left: 1.7rem;
+    padding: 1rem;
     height: 3rem;
-    width: 5.5rem;
+    width: 5rem;
     align-items: center;
     display: flex;
     border-radius: 0.5rem;
@@ -77,16 +77,24 @@ nav a:first-child {
     font-weight: bold;
 }
 
+.btn-edit {
+    background-color: var(--branco);
+    cursor: pointer;
+    color: var(--cor-secundaria);
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 1rem;
+}
 
 .btn-delete {
     background-color: var(--cor-secundaria);
     cursor: pointer;
     color: var(--branco);
-    padding: 1.7rem;
+    padding: 1rem;
     height: 3rem;
-    width: 7rem;
-    align-items: center;
-    display: flex;
+    width: 12rem;
     border-radius: 0.5rem;
     border: none;
     font-size: 1rem;
@@ -135,17 +143,6 @@ nav a:first-child {
     gap: 2rem;
     grid-column: 2;
     justify-content: end;
-}
-
-.btn-edit {
-    background-color: var(--branco);
-    cursor: pointer;
-    color: var(--cor-secundaria);
-    padding: 0.8rem;
-    border-radius: 0.5rem;
-    border: none;
-    font-size: 1rem;
-    font-weight: bold;
 }
 
 .question {

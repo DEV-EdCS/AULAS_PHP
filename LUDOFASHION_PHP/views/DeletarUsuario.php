@@ -1,9 +1,9 @@
 <?php
-session_start(); // Inicia a sessão
+session_start();
 require 'conexao.php'; // Inclui a conexão com o banco de dados
 require 'Usuarios.php'; // Inclui o arquivo que contém a classe Usuarios
 
-$conn = (new Conexao())->conectar(); // Instancia a classe Conexao e obtém a conexão
+$conn = (new Conexao())->conectar();
 
 if ($conn === null) {
     die("Erro ao conectar com o banco de dados");
@@ -12,12 +12,18 @@ if ($conn === null) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = $_POST['user_id'];
 
-    $usuarios = new Usuarios($conn);
-    $usuarios->deletar($user_id);
+    try {
+        $stmt = $conn->prepare("DELETE FROM usuarios WHERE id = :id");
+        $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-    // Destrói a sessão e redireciona para a página de login ou home
-    session_destroy();
-    header('Location: Login.php'); // Ou a página que preferir
-    exit();
+        // Após deletar o usuário, desloga e redireciona para a página inicial
+        session_destroy();
+        header('Location: Login.php');
+        exit();
+    } catch (PDOException $e) {
+        echo "Erro ao deletar o usuário: " . $e->getMessage();
+    }
 }
 ?>
+

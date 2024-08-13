@@ -36,6 +36,8 @@ try {
     $cpf = $user['cpf'];
     $nascimento = $user['nascimento'];
 
+    // $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
     echo "Erro ao buscar dados do perfil: " . $e->getMessage();
 }
@@ -87,10 +89,10 @@ try {
                 <p>Gerenciar e proteger sua conta</p>
             </div>
 
-            <form class="conteudo">
+            <div class="conteudo" >
                 <div class="nome-usuario">
                 <h1>Perfil de <?php echo htmlspecialchars($user['nome']); ?></h1>
-                <a class="btn-logout" href="logout.php">Sair</a>
+                <a class="btn-logout" href="logout.php">Desconectar</a>
                 </div>
                 
                 <div class="info-usuario">
@@ -104,12 +106,12 @@ try {
                 <div class="modificar">
                     <a href="EditarUser.php" class="btn-edit">Editar</a>
 
-                    <form action="DeletarUser.php" method="post" onsubmit="return confirm('Tem certeza que deseja deletar sua conta?');">
+                    <form action="DeletarUsuario.php" method="post" onsubmit="return confirm('Tem certeza que deseja deletar sua conta?');">
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                         <input class="btn-delete" type="submit" value="Deletar Conta">
                     </form>
                 </div>
-            </form>
+            </div>
         </div>
     </section>
 
