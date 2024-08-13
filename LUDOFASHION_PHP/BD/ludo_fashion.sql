@@ -11,7 +11,7 @@ CREATE TABLE usuarios (
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(100) NOT NULL,
     telefone VARCHAR(100) NOT NULL,
-    cpf CHAR(14) NOT NULL,
+    cpf CHAR(14) NOT NULL UNIQUE,
     nascimento VARCHAR(10) NOT NULL,
     perfil ENUM('normal', 'administrador') DEFAULT 'normal',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -28,6 +28,5 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 tamanho VARCHAR(50),
 cor VARCHAR(50),
-preco VARCHAR(50),
 descricao VARCHAR(150)
 );

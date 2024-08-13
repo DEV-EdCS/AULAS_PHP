@@ -67,32 +67,34 @@ try {
     <section class="lista">
         <div class="part1">
             <div class="options1">
-                <a href=""><img src="../imgs/Icon_user.png" alt="" width="40px"></a>
+                <a href=""><img src="../images/Icon_user.png" alt="" width="40px"></a>
                 <a href="" title="Minha Conta"><b>Minha Conta</b></a>
             </div>
             <div class="options2">
-                <a href=""><img src="../imgs/icon_favorite.png" alt="" width="40px"></a>
+                <a href=""><img src="../images/icon_favorite.png" alt="" width="40px"></a>
                 <a href="ListadeDesejo.php" title="Lista de Desejos"><b>Lista de Desejos</b></a>
             </div>
             <div class="options3">
-                <a href=""><img src="../imgs/icon_categorias.png" alt="" width="40px"></a>
+                <a href=""><img src="../images/icon_categorias.png" alt="" width="40px"></a>
                 <a href="" title="Categorias"><b>Categorias</b></a>
             </div>
             <div class="options4">
-                <a href=""><img src="../imgs/icon_invetario.png" alt="" width="40px"></a>
+                <a href=""><img src="../images/icon_invetario.png" alt="" width="40px"></a>
                 <a href="" title="Produtos"><b>Produtos</b></a>
             </div>
         </div>
         <div class="part2">
-            <div class="titulo">
+            <div class="perfil">
+                <div class="titulo">
                 <h1>Meu Perfil</h1>
                 <p>Gerenciar e proteger sua conta</p>
+                </div>
+                <a class="btn-logout" href="logout.php">Desconectar</a>
             </div>
 
             <div class="conteudo" >
                 <div class="nome-usuario">
                 <h1>Perfil de <?php echo htmlspecialchars($user['nome']); ?></h1>
-                <a class="btn-logout" href="logout.php">Desconectar</a>
                 </div>
                 
                 <div class="info-usuario">

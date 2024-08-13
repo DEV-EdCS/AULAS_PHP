@@ -80,6 +80,28 @@ nav a:first-child {
     margin-right: 10% 
 }
 
+.perfil {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-logout {
+    display: flex;
+    background-color: var(--cor-primaria);
+    cursor: pointer;
+    color: var(--cor-secundaria);
+    padding: 1rem;
+    height: 3rem;
+    width: 9rem;
+    align-items: center;
+    display: flex;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 .options1 {
     margin-bottom: 30px;
     display: flex;

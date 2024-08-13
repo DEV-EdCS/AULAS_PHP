@@ -17,14 +17,14 @@ $produto = new Produtos($conn);
 // Verifica se um ID de Produtos foi passado
 $id = $_GET['id'] ?? null;
 if (!$id) {
-    header('Location: index.php');
+    header('Location: ProdutosCadastrados.php');
     exit();
 }
 
 // Obtém os dados do produto para o formulário
 $dadosProduto = $produto->obterPorId($id);
 if (!$dadosProduto) {
-    header('Location: index.php');
+    header('Location: ProdutosCadastrados.php');
     exit();
 }
 
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fotoTmp = $_FILES['foto']['tmp_name'];
         $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
         $fotoNome = uniqid() . '.' . $extensao; // Gera um nome único para a foto
-        $destino = 'uploads/' . $fotoNome;
+        $destino = '/uploads' . $fotoNome;
 
         // Verifica o tipo de arquivo
         if ($extensao == 'jpg' || $extensao == 'jpeg') {
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $produto->atualizar($id, $nome, $cor, $tamanho, $descricao, $fotoNome);
 
     // Redireciona para a página inicial
-    header('Location: index.php');
+    header('Location: ProdutosCadastrados.php');
     exit(); // Certifique-se de que o script é encerrado após o redirecionamento
 }
 ?>
@@ -73,22 +73,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Editar Carro</title>
+    <title>Editar Produto</title>
     <!-- Inclui o CSS personalizado -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/ProdutosCadastrados.css">
+    <!-- Inclui o JS personalizado -->
+    <script src="js/script.js"></script>
 </head>
 <body>
     <div class="container">
-        <!-- Banner com o nome da loja -->
-        <header class="jumbotron text-center bg-primary text-white mb-4">
-            <h1 class="display-4">Produtos Cadastrados</h1>
-            <p class="lead">Editar Produtos</p>
+        <header class="">
+            <h1 class="">Produtos Cadastrados</h1>
+            <p class="">Editar Produtos</p>
         </header>
 
         <!-- Formulário de Edição -->
         <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">Formulário de Edição</h4>
+            <div class="">
+                <h4 class="">Formulário de Edição</h4>
             </div>
             <div class="card-body">
             <form action="editar.php?id=<?= htmlspecialchars($id) ?>" method="post" enctype="multipart/form-data">
@@ -112,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="foto">Foto:</label>
                         <?php if ($dadosProduto['foto']): ?>
                             <div>
-                                <img src="uploads/<?= htmlspecialchars($dadosProduto['foto']) ?>" width="218" height="148" alt="Foto do Produto">
+                                <img src="uploads/<?= htmlspecialchars($dadosProduto['foto']) ?>" width="218" height="348" alt="Foto do Produto">
                             </div>
                             <?php endif; ?>
                         <input type="file" name="foto" id="foto" class="form-control-file" accept="image/jpeg">
@@ -122,8 +123,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
     </div>
-
-    <!-- Inclui o JS personalizado -->
-    <script src="js/script.js"></script>
 </body>
 </html>

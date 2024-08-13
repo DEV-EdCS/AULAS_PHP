@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LudoFashion</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <script src="../js/script.js" defer></script>
 </head>
 
 <body>
 
-    <?php include 'views/header.php'; ?>
-
+    <?php include 'header.php'; ?>
 
     <nav class="opcoes">
-        <a href="views/produtos.php">Catálogo</a>
-        <a href="views/Sobre.php">Sobre a Loja</a>
+        <a href="produtos.php">Catálogo</a>
+        <a href="Sobre.php">Sobre a Loja</a>
     </nav>
     <main>
 
@@ -24,8 +23,8 @@
          
             <div class="carousel-container">
                 <div class="carousel-slide">
-                    <img src="images/banner_ludofashion1.png" alt="Banner 1" width="100%x">
-                    <img src="images/banner_ludofashion2.png" alt="Banner 2" width="1538px">
+                    <img src="../images/banner_ludofashion1.png" alt="Banner 1" width="100%x">
+                    <img src="../images/banner_ludofashion2.png" alt="Banner 2" width="1538px">
                 </div>
             </div>
         </div>
@@ -77,7 +76,7 @@
         </section>
     </main>
 
-    <?php include 'views/footer.php'; ?>
+    <?php include 'footer.php'; ?>
 </body>
 
 

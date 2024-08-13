@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
         $fotoTmp = $_FILES['foto']['tmp_name'];
         $fotoNome = uniqid() . '.jpg'; // Gera um nome único para a foto
-        $destino = 'uploads/' . $fotoNome;
+        $destino = '/uploads' . $fotoNome;
 
         // Verifica se o arquivo é uma imagem JPEG
         if (exif_imagetype($fotoTmp) === IMAGETYPE_JPEG) {
@@ -62,12 +62,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Adicionar Produto</title>
-    <!-- Inclui o CSS personalizado -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ProdutosCadastrados.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
 
-<?php include 'views/header.php'; ?>
+<?php include 'header.php'; ?>
     <div class="container">
         <!-- Banner com o nome da loja -->
         <div class="cabecalho-add">
@@ -109,9 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         </div>
     </div>
-    <!-- Inclui o JS personalizado -->
-    <script src="js/script.js"></script>
-    <?php include 'views/footer.php'; ?>
+    <?php include 'footer.php'; ?>
 </body>
 </html>
 

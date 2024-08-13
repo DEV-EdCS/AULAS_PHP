@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>CRUD de Produtos</title>
     <!-- Inclui o CSS personalizado -->
-    <link rel="stylesheet" href="../css/ProdutosCadastrados.css" />
+    <link rel="stylesheet" href="css/ProdutosCadastrados.css" />
     <!-- Inclui o JS personalizado -->
     <script src="js/script.js"></script>
 </head>

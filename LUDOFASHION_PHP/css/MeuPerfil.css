@@ -42,6 +42,12 @@ nav a:first-child {
     margin-right: 10% 
 }
 
+.perfil {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .conteudo {
     background-color: var(--cor-terciaria);
     display: flex;
@@ -63,12 +69,13 @@ nav a:first-child {
 }
 
 .btn-logout {
+    display: flex;
     background-color: var(--cor-primaria);
     cursor: pointer;
     color: var(--cor-secundaria);
     padding: 1rem;
     height: 3rem;
-    width: 5rem;
+    width: 9rem;
     align-items: center;
     display: flex;
     border-radius: 0.5rem;
@@ -85,7 +92,7 @@ nav a:first-child {
     border: none;
     font-size: 1rem;
     font-weight: bold;
-    padding: 1rem;
+    padding: 0.9rem;
 }
 
 .btn-delete {
