@@ -28,5 +28,5 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 tamanho VARCHAR(50),
 cor VARCHAR(50),
-descricao VARCHAR(150)
+descricao VARCHAR(250)
 );

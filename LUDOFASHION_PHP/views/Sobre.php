@@ -36,7 +36,7 @@
             <br><br><strong>Missão:</strong> Proporcionar uma seleção cuidadosamente curada de cosméticos e
             roupas femininas que inspirem confiança e expressão individual, com excelência em qualidade e serviço ao
             cliente. <br><br><strong>Valores:</strong> Excelência, Integridade, Empoderamento.</p>
-        <img src="../LudoFashion/imgs/meninas_rosa.jpg" class="banner" alt="Meninas de rosa" width="100%">
+        <img src="../images/meninas_rosa.jpg" class="banner" alt="Meninas de rosa" width="100%">
     </div>
     <?php include '../views/footer.php'; ?>
 </body>

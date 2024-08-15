@@ -25,17 +25,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
         $fotoTmp = $_FILES['foto']['tmp_name'];
         $fotoNome = uniqid() . '.jpg'; // Gera um nome único para a foto
-        $destino = '/uploads' . $fotoNome;
+        $destino = '../uploads/' . $fotoNome;
 
         // Verifica se o arquivo é uma imagem JPEG
         if (exif_imagetype($fotoTmp) === IMAGETYPE_JPEG) {
-            // Redimensiona a imagem para 218x348 px
+            // Obtém as dimensões originais da imagem
             list($larguraOriginal, $alturaOriginal) = getimagesize($fotoTmp);
+
+            // Define a largura máxima e calcula a altura proporcional
+            $larguraMax = 348;
+            $alturaMax = 218;
+
+            $fatorProporcao = min($larguraMax / $larguraOriginal, $alturaMax / $alturaOriginal);
+            $novaLargura = round($larguraOriginal * $fatorProporcao);
+            $novaAltura = round($alturaOriginal * $fatorProporcao);
+
             $imagemOriginal = imagecreatefromjpeg($fotoTmp);
-            $imagemRedimensionada = imagecreatetruecolor(218, 348);
+            $imagemRedimensionada = imagecreatetruecolor($novaLargura, $novaAltura);
 
             // Redimensiona mantendo a proporção da imagem original
-            imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 218, 348, $larguraOriginal, $alturaOriginal);
+            imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, $novaLargura, $novaAltura, $larguraOriginal, $alturaOriginal);
             imagejpeg($imagemRedimensionada, $destino);
             imagedestroy($imagemOriginal);
             imagedestroy($imagemRedimensionada);
@@ -62,13 +71,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Adicionar Produto</title>
-    <link rel="stylesheet" href="css/ProdutosCadastrados.css">
+    <link rel="stylesheet" href="../css/AdicionarProduto.css">
     <script src="js/script.js" defer></script>
 </head>
 <body>
 
 <?php include 'header.php'; ?>
-    <div class="container">
+<nav>
+        <a href="#">Catálogo</a>
+        <a href="#">Sobre a Loja</a>
+    </nav>
+    <div class="formulario">
         <!-- Banner com o nome da loja -->
         <div class="cabecalho-add">
             <h1 class="titulo1">Catálogo Ludo Fashion</h1><br>
@@ -76,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <!-- Formulário de Adição -->
-         <div>
         <div class="card">
             <div class="titulo2">
                 <h4 class="titulo-painel">Formulário de Adição</h4>
@@ -103,13 +115,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="foto">Foto:</label><br>
                         <input type="file" name="foto" id="foto" class="form-control-file" accept="image/jpeg">
                     </div>
-                    <button type="submit" class="btn btn-success">Adicionar Produto</button>
+                    <button type="submit" class="btn-success">Adicionar Produto</button>
                 </form>
             </div>
-        </div>
         </div>
     </div>
     <?php include 'footer.php'; ?>
 </body>
 </html>
-

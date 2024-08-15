@@ -40,30 +40,44 @@ class Produtos
     }
 
     // Método para atualizar um produto
-    public function atualizar($id, $nome, $cor, $tamanho, $descricao, $foto)
-    {
-        $sql = "UPDATE produtos SET nome = :nome, cor = :cor, tamanho = :tamanho, descricao = :descricao, foto = :foto WHERE id = :id"; // Atualiza os dados da tabela produtos utilizando o UPDATE através do ID específico 
+        public function atualizar($id, $nome, $cor, $tamanho, $descricao, $foto)
+{
+    // Verifica se foi enviada uma nova imagem
+    if ($foto) {
+        $sql = "UPDATE produtos SET nome = :nome, cor = :cor, tamanho = :tamanho, descricao = :descricao, foto = :foto WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':cor', $cor);
-        $stmt->bindParam(':tamanho', $tamanho);
-        $stmt->bindParam(':descricao', $descricao);
         $stmt->bindParam(':foto', $foto);
-        $stmt->execute();
+    } else {
+        $sql = "UPDATE produtos SET nome = :nome, cor = :cor, tamanho = :tamanho, descricao = :descricao WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
     }
+
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':cor', $cor);
+    $stmt->bindParam(':tamanho', $tamanho);
+    $stmt->bindParam(':descricao', $descricao);
+    $stmt->execute();
+}
+
 
     // Método para deletar produtos
     public function deletar($ids)
     {
+        // Verifica se o array de IDs está vazio
+        if (empty($ids)) {
+            return; // Se não há IDs para deletar, apenas retorna sem fazer nada
+        }
+    
         // Sanitiza IDs
         $ids = array_map('intval', $ids);
         $ids = implode(',', $ids);
-
+    
         // Usa uma query preparada para evitar SQL Injection
         $sql = "DELETE FROM produtos WHERE id IN ($ids)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
     }
+    
 }
 ?>

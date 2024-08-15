@@ -3,8 +3,14 @@
 require 'conexao.php';
 require 'produtos.php';
 
+// Habilita a exibição de erros para depuração
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Cria a conexão com o banco de dados
 $conn = (new Conexao())->conectar();
+
 // Cria uma instância da classe Produtos
 $produto = new Produtos($conn);
 
@@ -13,14 +19,18 @@ $produtos = $produto->listar();
 
 // Verifica se a requisição é do tipo POST (para deletar produtos)
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
-    // Obtém os IDs dos produtos a serem deletados
-    $idsParaDeletar = $_POST['ids'];
-    // Deleta os produtos selecionados
-    $produto->deletar($idsParaDeletar);
+    // Verifica se há IDs de produtos selecionados
+    if (isset($_POST['ids']) && !empty($_POST['ids'])) {
+        // Obtém os IDs dos produtos a serem deletados
+        $idsParaDeletar = $_POST['ids'];
+        // Deleta os produtos selecionados
+        $produto->deletar($idsParaDeletar);
+    }
     // Redireciona para a página inicial
-    header('Location: index.php');
+    header('Location: ProdutosCadastrados.php');
     exit(); // Certifique-se de que o script é encerrado após o redirecionamento
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -29,20 +39,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>CRUD de Produtos</title>
+    <title>Produtos Cadastrados</title>
     <!-- Inclui o CSS personalizado -->
-    <link rel="stylesheet" href="css/ProdutosCadastrados.css" />
+    <link rel="stylesheet" href="../css/ProdutosCadastrados.css" />
+    
     <!-- Inclui o JS personalizado -->
-    <script src="js/script.js"></script>
+    <script defer src="../js/script.js"></script>
 </head>
 
 <body>
 
-    <?php include '../views/header.php'; ?>
+    <?php include 'header.php'; ?>
 
     <nav>
-        <a href="">Catálogo</a>
-        <a href="">Sobre a Loja</a>
+        <a href="#">Catálogo</a>
+        <a href="#">Sobre a Loja</a>
     </nav>
     <div class="container-fluid">
         <!-- Painel de Dashboard -->
@@ -55,18 +66,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                 <?= count($produtos) ?>
             </p>
         </div>
-        <div class="btn-edicao">
-            <!-- Botão para adicionar um novo produto -->
-            <a href="adicionar.php" class="btn btn-success mb-3">Adicionar Produto</a>
-
-            <!-- Botão para deletar os produtos selecionados -->
-            <button type="submit" class="btn btn-danger">Deletar Selecionados</button>
-        </div>
-
         <!-- Formulário para deletar produtos selecionados -->
-
-        <form action="index.php" method="post">
+        <form id="deleteForm" action="ProdutosCadastrados.php" method="post">
+            <!-- Botão para adicionar novo produto -->
+             <div class="btn-topo">
             <div>
+                <a href="adicionar.php" class="btn-success">Adicionar Produto</a>
+            </div>
+            <div>
+            <input type="hidden" name="deletar" value="1">
+            <button type="button" class="btn btn-danger" onclick="confirmDelete()">Deletar Selecionados</button>
+            </div>
+            </div>
+            <div>
+               
                 <table class="table">
                     <thead>
                         <tr>
@@ -83,14 +96,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                         <?php foreach ($produtos as $produto): ?>
                         <tr>
                             <td>
-                            <!-- Checkbox para selecionar o produto para deleção -->
                                 <input type="checkbox" name="ids[]" value="<?= $produto['id'] ?>">
                             </td>
-                            <td>
-                            <!-- Exibe a foto do produto, se disponível -->
-                            <?php if ($produto['foto']): ?>
-                                <img src="../uploads<?= $produto['foto'] ?>" width="348px" height="218px" alt="Foto do Produto">
-                            <?php endif; ?>
+                            <td width=210px>
+                                <?php if ($produto['foto']): ?>
+                                <img src="../uploads/<?= $produto['foto'] ?>" width="348px" height="218px"
+                                    alt="Foto do Produto">
+                                <?php endif; ?>
                             </td>
                             <td>
                                 <?= htmlspecialchars($produto['nome']) ?>
@@ -105,7 +117,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                                 <?= htmlspecialchars($produto['descricao']) ?>
                             </td>
                             <td>
-                                    <!-- Link para editar o produto -->
                                 <a href="editar.php?id=<?= $produto['id'] ?>" class="btn btn-warning">Editar</a>
                             </td>
                         </tr>
@@ -113,10 +124,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
                     </tbody>
                 </table>
             </div>
-            <input type="hidden" name="deletar" value="1">
         </form>
     </div>
-    <?php include '../views/footer.php'; ?>
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>

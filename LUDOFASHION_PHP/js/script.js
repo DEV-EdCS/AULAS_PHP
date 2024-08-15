@@ -44,3 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Script para confirmação de exclusão dos produtos
+function confirmDelete() {
+    if (confirm('Tem certeza de que deseja deletar os produtos selecionados?')) {
+        document.getElementById('deleteForm').submit();
+    }
+}

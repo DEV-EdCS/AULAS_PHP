@@ -1,5 +1,5 @@
 <?php
-// Inclui os arquivos de conexão e da classe Carro
+// Inclui os arquivos de conexão e da classe Produtos
 require 'conexao.php';
 require 'produtos.php';
 
@@ -34,34 +34,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cor = $_POST['cor'];
     $tamanho = $_POST['tamanho'];
     $descricao = $_POST['descricao'];
-    $fotoNome = $dadosProduto['foto'];
 
-     // Lida com o upload da foto
-     if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
+    // Lida com o upload da foto
+    if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
         $fotoTmp = $_FILES['foto']['tmp_name'];
-        $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
-        $fotoNome = uniqid() . '.' . $extensao; // Gera um nome único para a foto
-        $destino = '/uploads' . $fotoNome;
+        $fotoNome = uniqid() . '.jpg'; // Gera um nome único para a foto
+        $destino = '../uploads/' . $fotoNome;
 
-        // Verifica o tipo de arquivo
-        if ($extensao == 'jpg' || $extensao == 'jpeg') {
-            // Redimensiona a imagem para 218x348 px
+        // Verifica se o arquivo é uma imagem JPEG
+        if (exif_imagetype($fotoTmp) === IMAGETYPE_JPEG) {
+            // Obtém as dimensões originais da imagem
             list($larguraOriginal, $alturaOriginal) = getimagesize($fotoTmp);
+
+            // Define a largura máxima e calcula a altura proporcional
+            $larguraMax = 348;
+            $alturaMax = 218;
+
+            $fatorProporcao = min($larguraMax / $larguraOriginal, $alturaMax / $alturaOriginal);
+            $novaLargura = round($larguraOriginal * $fatorProporcao);
+            $novaAltura = round($alturaOriginal * $fatorProporcao);
+
             $imagemOriginal = imagecreatefromjpeg($fotoTmp);
-            $imagemRedimensionada = imagecreatetruecolor(218, 348);
-            imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, 218, 348, $larguraOriginal, $alturaOriginal);
+            $imagemRedimensionada = imagecreatetruecolor($novaLargura, $novaAltura);
+
+            // Redimensiona mantendo a proporção da imagem original
+            imagecopyresampled($imagemRedimensionada, $imagemOriginal, 0, 0, 0, 0, $novaLargura, $novaAltura, $larguraOriginal, $alturaOriginal);
             imagejpeg($imagemRedimensionada, $destino);
             imagedestroy($imagemOriginal);
             imagedestroy($imagemRedimensionada);
         } else {
-            echo "Formato de imagem não suportado.";
+            echo "Erro: A foto deve ser uma imagem JPEG.";
             exit();
         }
+
+        // Atualiza o produto no banco de dados
+        $produto->atualizar($id, $nome, $cor, $tamanho, $descricao, $fotoNome);
+    } else {
+        // Atualiza o produto sem foto no banco de dados
+        $produto->atualizar($id, $nome, $cor, $tamanho, $descricao, null);
     }
-
-
-    // Atualiza os dados do produto no banco de dados
-    $produto->atualizar($id, $nome, $cor, $tamanho, $descricao, $fotoNome);
 
     // Redireciona para a página inicial
     header('Location: ProdutosCadastrados.php');
@@ -75,24 +86,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <title>Editar Produto</title>
     <!-- Inclui o CSS personalizado -->
-    <link rel="stylesheet" href="../css/ProdutosCadastrados.css">
+    <link rel="stylesheet" href="../css/EditarProduto.css">
     <!-- Inclui o JS personalizado -->
-    <script src="js/script.js"></script>
+    <script defer src="js/script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header class="">
-            <h1 class="">Produtos Cadastrados</h1>
-            <p class="">Editar Produtos</p>
-        </header>
+<?php include 'header.php'; ?>
+<nav>
+        <a href="#">Catálogo</a>
+        <a href="#">Sobre a Loja</a>
+    </nav>
+    <div class="formulario">
+    <h1>Produtos Cadastrados</h1>
+    <p>Editar Produtos</p>
+    </div>
+    <div>
 
         <!-- Formulário de Edição -->
-        <div class="card">
-            <div class="">
+        <div class="formulario">
+            <div class="card-topo">
                 <h4 class="">Formulário de Edição</h4>
             </div>
             <div class="card-body">
-            <form action="editar.php?id=<?= htmlspecialchars($id) ?>" method="post" enctype="multipart/form-data">
+                <form action="editar.php?id=<?= htmlspecialchars($id) ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nome">Nome:</label>
                         <input type="text" name="nome" id="nome" class="form-control" value="<?= htmlspecialchars($dadosProduto['nome']) ?>" required>
@@ -115,13 +131,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div>
                                 <img src="uploads/<?= htmlspecialchars($dadosProduto['foto']) ?>" width="218" height="348" alt="Foto do Produto">
                             </div>
-                            <?php endif; ?>
+                        <?php endif; ?>
                         <input type="file" name="foto" id="foto" class="form-control-file" accept="image/jpeg">
                     </div>
-                    <button type="submit" class="btn btn-warning">Atualizar Produto</button>
+                    <button type="submit" class="btn-warning">Atualizar Produto</button>
                 </form>
             </div>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

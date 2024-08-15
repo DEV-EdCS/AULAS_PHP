@@ -74,12 +74,12 @@ try {
                 <a href=""><img src="../images/icon_favorite.png" alt="" width="40px"></a>
                 <a href="ListadeDesejo.php" title="Lista de Desejos"><b>Lista de Desejos</b></a>
             </div>
-            <div class="options3">
+            <!-- <div class="options3">
                 <a href=""><img src="../images/icon_categorias.png" alt="" width="40px"></a>
                 <a href="" title="Categorias"><b>Categorias</b></a>
-            </div>
+            </div> -->
             <div class="options4">
-                <a href=""><img src="../images/icon_invetario.png" alt="" width="40px"></a>
+                <a href="ProdutosCadastrados.php"><img src="../images/icon_invetario.png" alt="" width="40px"></a>
                 <a href="" title="Produtos"><b>Produtos</b></a>
             </div>
         </div>
