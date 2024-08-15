@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>CRUD de Produtos</title>
     <!-- Inclui o CSS personalizado -->
-    <link rel="stylesheet" href="css/style.css"/> 
+    <link rel="stylesheet" href="css/CadastroProdutos.css"/> 
 </head>
 <header>
     <a href="" class="icon-link">
