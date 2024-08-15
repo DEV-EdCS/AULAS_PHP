@@ -13,10 +13,13 @@
 
     <?php include 'header.php'; ?>
 
-    <nav class="opcoes">
-        <a href="produtos.php">Catálogo</a>
-        <a href="Sobre.php">Sobre a Loja</a>
-    </nav>
+    <nav>
+
+    <a href="Busca.php">Catálogo</a>
+
+    <a href="Sobre.php">Sobre a Loja</a>
+
+</nav>
     <main>
 
         <div class="slider">

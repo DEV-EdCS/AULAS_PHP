@@ -93,9 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <?php include 'header.php'; ?>
 <nav>
-        <a href="#">Catálogo</a>
-        <a href="#">Sobre a Loja</a>
-    </nav>
+
+    <a href="Busca.php">Catálogo</a>
+
+    <a href="Sobre.php">Sobre a Loja</a>
+
+</nav>
     <div class="formulario">
     <h1>Produtos Cadastrados</h1>
     <p>Editar Produtos</p>

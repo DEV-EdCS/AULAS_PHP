@@ -78,9 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php include 'header.php'; ?>
 <nav>
-        <a href="#">Catálogo</a>
-        <a href="#">Sobre a Loja</a>
-    </nav>
+
+    <a href="Busca.php">Catálogo</a>
+
+    <a href="Sobre.php">Sobre a Loja</a>
+
+</nav>
     <div class="formulario">
         <!-- Banner com o nome da loja -->
         <div class="cabecalho-add">

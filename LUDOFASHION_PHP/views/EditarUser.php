@@ -52,8 +52,11 @@ $user = $usuarios->obterPorId($user_id);
 <?php include '../views/header.php'; ?>
 
 <nav>
-    <a href="#">Catálogo</a>
-    <a href="#">Sobre a Loja</a>
+
+    <a href="Busca.php">Catálogo</a>
+
+    <a href="Sobre.php">Sobre a Loja</a>
+
 </nav>
 
 <body>

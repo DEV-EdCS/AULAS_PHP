@@ -52,9 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletar'])) {
     <?php include 'header.php'; ?>
 
     <nav>
-        <a href="#">Catálogo</a>
-        <a href="#">Sobre a Loja</a>
-    </nav>
+
+    <a href="Busca.php">Catálogo</a>
+
+    <a href="Sobre.php">Sobre a Loja</a>
+
+</nav>
     <div class="container-fluid">
         <!-- Painel de Dashboard -->
         <div class="card-header">

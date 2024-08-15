@@ -51,9 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <nav>
 
-    <a href="">Catálogo</a>
+    <a href="Busca.php">Catálogo</a>
 
-    <a href="">Sobre a Loja</a>
+    <a href="Sobre.php">Sobre a Loja</a>
 
 </nav>
 

@@ -68,9 +68,6 @@ header {
 
 }
 
-.navegacao a img {
-}
-
 #btn-buscar {
     background-color: transparent;
     border: none;
@@ -89,6 +86,10 @@ nav {
 
 nav a:first-child {
     border-right: 1px solid var(--preto);
+}
+
+nav a {
+    color: var(--preto);
 }
 
 /* Carrossel */
@@ -133,7 +134,6 @@ nav a:first-child {
     width: 100%;
 }
 
-/* Fim do Banner*/
 /* Inicio dos Produtos */
 
 .conteudo h1 {

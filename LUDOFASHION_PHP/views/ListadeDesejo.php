@@ -12,9 +12,9 @@
 
 <nav>
 
-    <a href="">Catálogo</a>
+    <a href="Busca.php">Catálogo</a>
 
-    <a href="">Sobre a Loja</a>
+    <a href="Sobre.php">Sobre a Loja</a>
 
 </nav>
 
@@ -34,8 +34,8 @@
                 <a href="" title="Categorias"><b>Categorias</b></a>
             </div> -->
             <div class="options4">
-                <a href="ProdutosCadastros.php"><img src="../images/icon_invetario.png" alt="" width="40px"></a>
-                <a href="" title="Produtos"><b>Produtos</b></a>
+                <a href="ProdutosCadastrados.php"><img src="../images/icon_invetario.png" alt="" width="40px"></a>
+                <a href="ProdutosCadastrados.php" title="Produtos"><b>Produtos</b></a>
             </div>
         </div>
 

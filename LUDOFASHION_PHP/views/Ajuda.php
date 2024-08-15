@@ -12,13 +12,13 @@
 
 <?php include 'header.php'; ?>
 
-    <nav>
+<nav>
 
-        <a href="">Catálogo</a>
+<a href="Busca.php">Catálogo</a>
 
-        <a href="">Sobre a Loja</a>
+<a href="Sobre.php">Sobre a Loja</a>
 
-    </nav>
+</nav>
     <div>
         <h1>Principais perguntas:</h1>
     </div>

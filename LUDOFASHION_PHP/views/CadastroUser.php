@@ -49,13 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php include '../views/header.php'; ?>
 
-    <nav>
+<nav>
 
-        <a href="">Catálogo</a>
+<a href="Busca.php">Catálogo</a>
 
-        <a href="">Sobre a Loja</a>
+<a href="Sobre.php">Sobre a Loja</a>
 
-    </nav>
+</nav>
 
     <section class="conteudo">
         <h1>Bem vindo à Ludo Fashion</h1>

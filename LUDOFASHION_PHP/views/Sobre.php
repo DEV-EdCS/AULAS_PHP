@@ -14,11 +14,11 @@
 
     <nav>
 
-        <a href="">Catálogo</a>
+    <a href="Busca.php">Catálogo</a>
 
-        <a href="">Sobre a Loja</a>
+    <a href="Sobre.php">Sobre a Loja</a>
 
-    </nav>
+</nav>
     <h1>Quem somos?</h1>
     <div class="paragrafo">
         <p class="conteudo" style="font-size: 1.25rem;">LudoFashion é uma boutique online que cativa o coração de

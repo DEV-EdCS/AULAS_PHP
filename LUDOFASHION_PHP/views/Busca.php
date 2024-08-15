@@ -12,9 +12,9 @@
 
 <nav>
 
-    <a href="">Catálogo</a>
+    <a href="Busca.php">Catálogo</a>
 
-    <a href="">Sobre a Loja</a>
+    <a href="Sobre.php">Sobre a Loja</a>
 
 </nav>
 
@@ -52,7 +52,7 @@
                         <img src="../images/BLUSA-MC-LASTEX-MADALENA-ESTAMP-PTO-48-10056350876-C1.webp" alt="" width="100%">
                     </div>
                     <div class="card-content">
-                        <p>Blusa Plus Size Feminina Floral Lastex Marisa</p>
+                        <p>Blusa Plus Size Feminina Floral Lastex</p>
                     </div>
                 </div>
                 <div class="card">
@@ -132,7 +132,7 @@
                         <img src="../images/Vestido-Longo-Feminino-Estampa-Floral-Marisa-10055208154-C1.webp" alt="" width="100%">
                     </div>
                     <div class="card-content">
-                        <p>Vestido Longo Feminino Estampa Floral Marisa</p>
+                        <p>Vestido Longo Feminino Estampa Floral</p>
                     </div>
                 </div>
             </div>

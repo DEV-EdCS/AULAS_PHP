@@ -41,6 +41,8 @@ try {
 } catch (PDOException $e) {
     echo "Erro ao buscar dados do perfil: " . $e->getMessage();
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -57,9 +59,9 @@ try {
 
 <nav>
 
-    <a href="">Catálogo</a>
+    <a href="Busca.php">Catálogo</a>
 
-    <a href="">Sobre a Loja</a>
+    <a href="Sobre.php">Sobre a Loja</a>
 
 </nav>
 
@@ -80,7 +82,7 @@ try {
             </div> -->
             <div class="options4">
                 <a href="ProdutosCadastrados.php"><img src="../images/icon_invetario.png" alt="" width="40px"></a>
-                <a href="" title="Produtos"><b>Produtos</b></a>
+                <a href="ProdutosCadastrados.php" title="Produtos"><b>Produtos</b></a>
             </div>
         </div>
         <div class="part2">
