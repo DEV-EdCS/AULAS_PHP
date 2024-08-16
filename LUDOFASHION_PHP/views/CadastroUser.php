@@ -1,6 +1,5 @@
 <?php
 require 'conexao.php'; // Inclui a conexão com o banco de dados
-// include 'MeuPerfil.php';
 
 $conn = (new Conexao())->conectar();
 
@@ -19,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, telefone, cpf, nascimento, perfil) 
                                 VALUES (:nome, :email, :senha, :telefone, :cpf, :nascimento, :perfil)");
         // Associa os parâmetros da query aos valores recebidos
-        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':nome', $nome); //'$stmt' Variável que representa um objeto. 'bindParam' é um método que vincula um parâmetro nomeado (neste caso :nome) a uma variável PHP ($nome).
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':senha', $senha);
         $stmt->bindParam(':telefone', $telefone);

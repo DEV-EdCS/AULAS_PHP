@@ -3,7 +3,7 @@
 require 'conexao.php';
 require 'produtos.php';
 
-// Habilita a exibição de erros para depuração
+// Habilita a exibição de erros para para on/1, o que significa que os erros serão mostrados na tela.
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -21,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tamanho = $_POST['tamanho'];
     $descricao = $_POST['descricao'];
 
-    // Lida com o upload da foto
-    if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) {
-        $fotoTmp = $_FILES['foto']['tmp_name'];
+    // Verifica se o arquivo foi realmente enviado e está presente no array '$_FILES'
+    if (isset($_FILES['foto']) && $_FILES['foto']['error'] == UPLOAD_ERR_OK) { //'$_FILES' é uma superglobal que contém informações sobre arquivos enviados via formulário HTML. 'UPLOAD_ERR_OK' Verifica se não houve erro durante o upload
+        $fotoTmp = $_FILES['foto']['tmp_name']; // caminho onde o arquivo foi armazenado no servidor durante o upload
         $fotoNome = uniqid() . '.jpg'; // Gera um nome único para a foto
         $destino = '../uploads/' . $fotoNome;
 
