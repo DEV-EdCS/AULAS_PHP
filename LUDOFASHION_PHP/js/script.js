@@ -28,7 +28,9 @@ function moveCarousel() {
 }
 
 // Define um intervalo de tempo para chamar a função moveCarousel
-setInterval(moveCarousel, 5000); // 5000ms = 5s
+setInterval(moveCarousel, 10000); // 10000ms = 10s
+
+
 
 
 // Script para confirmação de exclusão de registros
@@ -44,6 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+
 
 // Script para confirmação de exclusão dos produtos
 function confirmDelete() {
